@@ -18,6 +18,7 @@ export default {
   data() {
     return {
       pages: [
+        { path: "2020041703", date: "2020-04-17_03, animation", title: "キリン一番搾り" },
         { path: "2020041702", date: "2020-04-17_02, animation", title: "郵便局がなくなってる・・・！？" },
         { path: "2020041701", date: "2020-04-17_01, scroll", title: "index.vueの幅がおかしい？" },
         { path: "2020041604", date: "2020-04-16_04", title: "スクエアのスクエアの運転の" },
