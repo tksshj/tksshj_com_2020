@@ -3,4 +3,5 @@
 node_modules
 dist
 yarn-error.log
-*_tksshj_com.tar.gz
+tksshj_com_2020.tar.gz
+deploy.sh
