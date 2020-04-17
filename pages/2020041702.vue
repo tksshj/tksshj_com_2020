@@ -60,7 +60,7 @@ export default {
                               }
                             })
                             .onComplete(() => {
-                              this.setTween(0, false)
+                              this.setTween(coords.y, !inc)
                             })
                             .start()
     },
@@ -89,7 +89,7 @@ export default {
       let isPortrait = this.p5.windowWidth < this.p5.windowHeight
       let nHorizontalTiles = isPortrait ? 3 : parseInt(this.p5.windowWidth / 256)
       let tileWidth = this.p5.windowWidth / nHorizontalTiles
-      let nVerticalTiles = parseInt(this.p5.windowHeight / tileWidth) + 1
+      let nVerticalTiles = parseInt(this.p5.windowHeight / tileWidth) + 2
 
       let position = this.position()
 
@@ -99,7 +99,7 @@ export default {
         for (let col = 0; col < nHorizontalTiles; col++) {
           this.p5.push()
           this.p5.translate(tileWidth * (col - nHorizontalTiles * 0.5), tileWidth * row - this.p5.windowHeight * 0.5)
-          this.p5.rotate(Math.PI * position.progress)
+          this.p5.rotate(Math.PI * position.progress * -0.5)
           this.p5.square(0, 0, tileWidth)
           this.p5.pop()
         }
