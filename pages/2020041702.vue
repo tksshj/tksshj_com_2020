@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div class="tc-scroller" :style="{ height: height + 'px' }"></div>
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
     <tc-content

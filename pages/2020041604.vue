@@ -1,15 +1,13 @@
 <template>
   <div>
-    <div class="tc-scroller" :style="{ height: height + 'px' }"></div>
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
     <tc-content
-      date="2020-04-16_04"
-      title="スクエアのスクエアの運転の"
+      date="2020-04-16_04, animation"
+      title="JIM BEAMとコーラ"
     >
       <p>
         おそらくJIM BEAMとコーラ飲んでて酔ってきてるのでは？
-        タイトル、運転じゃなくて自動のほうを残すべきでは？
       </p>
       <p>
         線じゃなくて色で表現すればよかったのかな？
@@ -29,7 +27,7 @@ export default {
     'tc-content': TcContent
   },
   head: {
-    title: '2020-04-6_04 - tksshj.com'
+    title: 'JIM BEAMとコーラ - tksshj.com'
   },
   data() {
     return {
@@ -49,7 +47,7 @@ export default {
     setTween(startY, inc) {
       const coords = { y: 0 }
       this.tween = new TWEEN.Tween(coords)
-                            .to({ y: this.height }, 30 * 1000)
+                            .to({ y: this.height }, 10 * 1000)
                             .easing(TWEEN.Easing.Sinusoidal.InOut)
                             .onUpdate(() => {
                               if (inc) {

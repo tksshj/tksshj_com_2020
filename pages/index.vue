@@ -18,10 +18,11 @@ export default {
   data() {
     return {
       pages: [
+        { path: "2020041801", date: "2020-04-18_01, scroll",    title: "資源ごみ" },
         { path: "2020041703", date: "2020-04-17_03, animation", title: "キリン一番搾り" },
         { path: "2020041702", date: "2020-04-17_02, animation", title: "郵便局がなくなってる・・・！？" },
-        { path: "2020041701", date: "2020-04-17_01, scroll", title: "index.vueの幅がおかしい？" },
-        { path: "2020041604", date: "2020-04-16_04", title: "スクエアのスクエアの運転の" },
+        { path: "2020041701", date: "2020-04-17_01, scroll",    title: "index.vueの幅がおかしい？" },
+        { path: "2020041604", date: "2020-04-16_04, animation", title: "JIM BEAMとコーラ" },
         { path: "2020041603", date: "2020-04-16_03", title: "スクエアのスクエアのスクエアの" },
         { path: "2020041602", date: "2020-04-16_02", title: "スクエアもするし自動運転もする" },
         { path: "2020041601", date: "2020-04-16_01", title: "スクロールするしスクエアもまわす" },

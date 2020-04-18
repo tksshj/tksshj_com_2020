@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div class="tc-scroller" :style="{ height: height + 'px' }"></div>
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
     <tc-content
@@ -31,7 +30,7 @@ export default {
     'tc-content': TcContent
   },
   head: {
-    title: '2020-04-17_02 - tksshj.com'
+    title: '2020-04-17_03 - tksshj.com'
   },
   data() {
     return {
