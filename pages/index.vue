@@ -18,6 +18,7 @@ export default {
   data() {
     return {
       pages: [
+        { path: "2020041903", date: "2020-04-19_03, animation", title: "スクロール失敗" },
         { path: "2020041902", date: "2020-04-19_02, animation", title: "サバ缶うんめぇ" },
         { path: "2020041901", date: "2020-04-19_01, animation", title: "ハンドソープ、LOHACO" },
         { path: "2020041801", date: "2020-04-18_01, scroll",    title: "資源ごみ、雨" },
