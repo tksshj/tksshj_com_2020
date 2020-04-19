@@ -1,24 +1,21 @@
 <template>
   <div>
-    <div class="tc-scroller" :style="{ height: height + 'px' }"></div>
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
     <tc-content
-      date="2020-04-18_01, scroll"
-      title="資源ごみ、雨"
+      date="2020-04-19_01, animation"
+      title="ハンドソープ、LOHACO"
     >
       <p>
-        資源ごみ、引きこもり生活で缶ビールの本数が増えたのですごい重要です。
-        雨、夕方くらいには止むらしいです。
-        文章適当すぎるな、もう少しなにか、ってもなあ、まあいっか。
+        ハンドソープが上北沢からなくなっていて、
+        LOHACOで購入したものが届きました。
+        トイレットペーパーもティッシュもまだ売ってないことが多いので、
+        この先LOHACOをよく使うようになるかもしれないですね。
+        次はウェットティッシュが必要になりそうなんですが、面倒な感じになりましたね。
       </p>
       <p>
-        下にスクロールすると、それぞれのタイルが別々に回転するようにしています。
-        最後そろうようにしたのと、センターで回すところがなんか苦労した適当だけど。
-        いや適当だからですね。
-      </p>
-      <p>
-        働こ。
+        アニメーションは<a href="./2020041801">これ</a>を運転しています。運転。
+        30秒に1回ピタッとなる予定だったんですが、やっぱ小数で計算してるとずれていきますね。
       </p>
     </tc-content>
 
@@ -27,6 +24,7 @@
 
 <script>
 import * as P5 from 'p5'
+import TWEEN from '@tweenjs/tween.js'
 import TcContent from '../components/tc_content.vue'
 
 export default {
@@ -34,7 +32,7 @@ export default {
     'tc-content': TcContent
   },
   head: {
-    title: '資源ごみ、雨 - tksshj.com'
+    title: 'ハンドソープ、LOHACO - tksshj.com'
   },
   data() {
     return {
@@ -42,17 +40,36 @@ export default {
       height: 0,
       p5App: null,
       p5: null,
-      squares: []
+      squares: [],
+      y: 0
     }
   },
   methods: {
     setupPage() {
       this.height = window.innerHeight * this.nPages
       this.p5App = new P5(this.sketch, 'tc-canvas-container')
+      this.setTween(0, false)
+    },
+    setTween(startY, inc) {
+      const coords = { y: 0 }
+      this.tween = new TWEEN.Tween(coords)
+                            .to({ y: this.height }, 30 * 1000)
+                            .easing(TWEEN.Easing.Sinusoidal.InOut)
+                            .onUpdate(() => {
+                              if (inc) {
+                                this.y = coords.y
+                              } else {
+                                this.y = this.height - coords.y
+                              }
+                            })
+                            .onComplete(() => {
+                              this.setTween(coords.y, !inc)
+                            })
+                            .start()
     },
     position() {
       let h = window.innerHeight
-      let y = window.scrollY
+      let y = this.y
       return {
         page: Math.floor(y / h),
         progress: (y % h) / h
@@ -85,6 +102,7 @@ export default {
       }
     },
     draw() {
+      TWEEN.update()
       let position = this.position()
       /* this.p5.clear()
        * this.p5.background(216) */
@@ -127,5 +145,8 @@ export default {
   top: 0;
   width: 100%;
   height: 100%;
+}
+a {
+  text-decoration: underline;
 }
 </style>

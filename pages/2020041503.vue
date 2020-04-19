@@ -3,14 +3,14 @@
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
     <tc-content
-      date="2020-04-15_03"
-      title="自動再生もする"
+      date="2020-04-15_03, animation"
+      title="醤油野菜炒め弁当"
     >
       <p>
         オリジン弁当、醤油野菜炒め弁当が最高すぎるので最高です。
       </p>
       <p>
-        <span class="underline"><a href="../2020041502">ひとつ前の記事</a></span>
+        <span class="underline"><a href="./2020041502">ひとつ前の記事</a></span>
         をスクロールしないで自動でアニメーションするようにしました。
       </p>
     </tc-content>
@@ -28,7 +28,7 @@ export default {
     'tc-content': TcContent
   },
   head: {
-    title: '2020-04-15_03 - tksshj.com'
+    title: '醤油野菜炒め弁当 - tksshj.com'
   },
   data() {
     return {

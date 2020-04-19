@@ -30,7 +30,7 @@ export default {
     'tc-content': TcContent
   },
   head: {
-    title: '2020-04-17_03 - tksshj.com'
+    title: 'キリン一番絞り - tksshj.com'
   },
   data() {
     return {
