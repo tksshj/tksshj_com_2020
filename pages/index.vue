@@ -23,6 +23,7 @@ export default {
   data() {
     return {
       pages: [
+        { path: "2020042003", description: "2020-04-20_03, animation",    title: "やっすいワイン、音楽つけたい"},
         { path: "2020042002", description: "2020-04-20_02, scroll",    title: "テキスト表示なんとかした" },
         { path: "2020042001", description: "2020-04-20_01, scroll",    title: "テキスト表示なんとかする？" },
         { path: "2020041903", description: "2020-04-19_03, animation", title: "スクロール失敗" },

@@ -4,7 +4,7 @@
 
     <tc-page-content
       title="やっすいワイン、音楽つけたい"
-      description="2020-04-20_03, scroll"
+      description="2020-04-20_03, animation"
     >
       <p>
         今日はやっすいワインです。最近ワイン飲む側の人間になりました。
