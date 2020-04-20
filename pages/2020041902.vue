@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div class="tc-scroller" :style="{ height: height + 'px' }"></div>
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
     <tc-page-content
@@ -15,7 +14,7 @@
       </p>
       <p>
         下にスクロールで正方形のタイルを変化させるパターンと思ってたんですけど、
-        色を描画ごとにランダムにしてみたらアニメーションになっちゃいました。
+        色を描画ごとにランダムにしてみたらアニメーションぽくなったのでまあこれで。
       </p>
     </tc-page-content>
 

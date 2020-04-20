@@ -8,7 +8,8 @@
     "@nuxtjs/google-analytics": "^2.2.3",
     "@tweenjs/tween.js": "^18.5.0",
     "nuxt": "^2.12.2",
-    "p5": "^1.0.0"
+    "p5": "^1.0.0",
+    "tone": "^13.8.25"
   },
   "devDependencies": {
     "node-sass": "^4.13.1",
