@@ -3,18 +3,19 @@
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
     <tc-page-content
-      title="おと！"
-      description="2020-04-20_04, animation"
+      title="ノイズ？ハイハット？"
+      description="2020-04-21_01, animation"
     >
       <p>
-        いろいろ調べてtone.jsっていうのをやってみようと思います。PLAYを押して音が出たら優勝ですわ！！！
-        MacのChromeでは音出ました。すごい。
+        無事iPhoneでも音がでたので、次はバスドラかハイハットの音を出してえなァ！
+        シンセ全然わからないんですが、とりあえずノイズっていうやつでなんかできたように聞こえるんだけどどうなんでしょうか、、、
       </p>
       <div class="tc-play-button-row">
-        <div @click="play" class="tc-play-button">PLAY</div>
+        <div @click="play" class="tc-play-button">ハイハット？</div>
       </div>
       <p>
-        ひとつ前のをサークルにしてみたんですけど立体っぽくないですか？偶然です。
+        関係なくもないけどボタンのデザイン気に入らないです。
+        アニメーションはなんかほんとに適当にソースいじってたらできたので説明する能力を持たない。
       </p>
     </tc-page-content>
 
@@ -32,7 +33,7 @@ export default {
     'tc-page-content': TcPageContent
   },
   head: {
-    title: 'おと！ - tksshj.com'
+    title: 'ノイズ？ハイハット？ - tksshj.com'
   },
   data() {
     return {
@@ -40,7 +41,7 @@ export default {
       height: 0,
       p5App: null,
       p5: null,
-      circles: [],
+      squares: [],
       y: 0,
       forward: true,
       toneStated: false
@@ -51,8 +52,8 @@ export default {
       if (!this.toneStated) {
         Tone.start()
       }
-      let synth = new Tone.Synth().toMaster()
-      synth.triggerAttackRelease('C4', '8n')
+      let noise = new Tone.NoiseSynth().toMaster()
+      noise.triggerAttackRelease('8n')
     },
     setupPage() {
       this.height = window.innerHeight * this.nPages
@@ -96,7 +97,7 @@ export default {
       let height = window.innerHeight
       this.p5.createCanvas(width, height, this.p5.WEBGL)
 
-      /* this.p5.frameRate(20) */
+      /* this.p5.frameRate(10) */
 
       let isPortrait = this.p5.windowWidth < this.p5.windowHeight
       let nHorizontalTiles = isPortrait ? 4 : parseInt(this.p5.windowWidth / 256)
@@ -104,11 +105,12 @@ export default {
       let nVerticalTiles = parseInt(this.p5.windowHeight / tileWidth) + 2
       for (let row = 0; row < nVerticalTiles; row++) {
         for (let col = 0; col < nHorizontalTiles + 2; col++) {
-          this.circles.push({
+          this.squares.push({
             x: tileWidth * (col - nHorizontalTiles * 0.5),
             y: tileWidth * row - this.p5.windowHeight * 0.5,
             width: tileWidth,
-            c: this.p5.random(32, 64)
+            scale: 1.0,
+            scaleRatio: this.p5.random(-0.1, 0.1)
           })
         }
       }
@@ -116,30 +118,40 @@ export default {
     draw() {
       TWEEN.update()
 
+      /* let changeScaleRatio = (this.p5.frameCount % 20 == 0) */
+
       let position = this.position()
       this.p5.clear()
       this.p5.background(216)
       this.p5.stroke(216)
       this.p5.strokeWeight(1)
-      for (let i = 0; i < this.circles.length; i++) {
-        let circle = this.circles[i]
-        /* circle.x = circle.x + this.p5.random(-10, 10)
-         * circle.y = circle.y + this.p5.random(-10, 10) */
-        let x = circle.x + (this.forward ? 0 : this.p5.random(-10, 10))
-        let y = circle.y + (this.forward ? 0 : this.p5.random(-10, 10))
+      for (let i = 0; i < this.squares.length; i++) {
+        let square = this.squares[i]
+
+        square.scale = square.scale + square.scaleRatio
+        if (square.scale < 0.1) {
+          square.scaleRatio = this.p5.random(0.01, 0.1)
+        } else if (1.0 < square.scale) {
+          square.scaleRatio = this.p5.random(-0.1, -0.01)
+        }
 
         this.p5.push()
-        this.p5.translate(x, y)
-        this.p5.rotate(Math.PI * position.progress * 2.0)
-        this.p5.translate(circle.width * -0.5, circle.width * -0.5)
-        this.p5.circle(0, 0, circle.width)
+        this.p5.stroke(216)
+        this.p5.translate(square.x, square.y)
 
-        let c = circle.c + this.p5.random(-10, 10)
-        circle.c = Math.max(32, Math.min(64, c))
-        for (let j = 0; j < 5; j++) {
-          this.p5.fill(255 - c * 1.0 / 5 * j)
-          this.p5.circle(circle.width * 0.1 * j, circle.width * 0.1 * j, circle.width * (1.0 - 0.2 * j))
-        }
+        this.p5.push()
+        this.p5.rotate(square.scale)
+
+
+        this.p5.fill(255)
+        this.p5.translate(square.width * -0.5, square.width * -0.5)
+        this.p5.square(0, 0, square.width)
+
+        this.p5.scale(square.scale)
+        this.p5.translate(square.width * -0.5, square.width * -0.5)
+        this.p5.fill(216)
+        this.p5.square(0, 0, square.width)
+        this.p5.pop()
 
         this.p5.pop()
       }
