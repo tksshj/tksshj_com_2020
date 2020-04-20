@@ -2,9 +2,9 @@
   <div>
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
-    <tc-content
-      date="2020-04-16_02"
+    <tc-page-content
       title="スクエアもするし自動運転もする"
+      description="2020-04-16_02, animation"
     >
       <p>
         自動運転ってなんやねん
@@ -13,7 +13,7 @@
         <span class="underline"><a href="../2020041601">ひとつ前の記事</a></span>
         を自動運転にしました。自動運転。
       </p>
-    </tc-content>
+    </tc-page-content>
 
   </div>
 </template>
@@ -21,14 +21,14 @@
 <script>
 import * as P5 from 'p5'
 import TWEEN from '@tweenjs/tween.js'
-import TcContent from '../components/tc_content.vue'
+import TcPageContent from '../components/tc_page_content.vue'
 
 export default {
   components: {
-    'tc-content': TcContent
+    'tc-page-content': TcPageContent
   },
   head: {
-    title: '2020-04-16_02 - tksshj.com'
+    title: 'スクエアもするし自動運転もする - tksshj.com'
   },
   data() {
     return {

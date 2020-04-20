@@ -3,9 +3,9 @@
     <div class="tc-scroller" :style="{ height: height + 'px' }"></div>
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
-    <tc-content
-      date="2020-04-16_03"
+    <tc-page-content
       title="スクエアのスクエアのスクエアの"
+      description="2020-04-16_03, scroll"
     >
       <p>
         JIM BEAMを買ってきた。コーラも買ってきた。
@@ -14,21 +14,21 @@
         下にスクロールすると正方形が回転しながら表示されます。
         なんか想定してたのとちがうけどまあいいけど好きではないです。
       </p>
-    </tc-content>
+    </tc-page-content>
 
   </div>
 </template>
 
 <script>
 import * as P5 from 'p5'
-import TcContent from '../components/tc_content.vue'
+import TcPageContent from '../components/tc_page_content.vue'
 
 export default {
   components: {
-    'tc-content': TcContent
+    'tc-page-content': TcPageContent
   },
   head: {
-    title: '2020-04-6_03 - tksshj.com'
+    title: 'スクエアのスクエアのスクエアの - tksshj.com'
   },
   data() {
     return {

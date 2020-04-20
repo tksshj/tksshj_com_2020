@@ -2,9 +2,9 @@
   <div>
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
-    <tc-content
-      date="2020-04-19_01, animation"
+    <tc-page-content
       title="ハンドソープ、LOHACO"
+      description="2020-04-19_01, animation"
     >
       <p>
         ハンドソープが上北沢からなくなっていて、
@@ -17,7 +17,7 @@
         アニメーションは<a href="./2020041801">これ</a>を運転しています。運転。
         30秒に1回ピタッとなる予定だったんですが、やっぱ小数で計算してるとずれていきますね。
       </p>
-    </tc-content>
+    </tc-page-content>
 
   </div>
 </template>
@@ -25,11 +25,11 @@
 <script>
 import * as P5 from 'p5'
 import TWEEN from '@tweenjs/tween.js'
-import TcContent from '../components/tc_content.vue'
+import TcPageContent from '../components/tc_page_content.vue'
 
 export default {
   components: {
-    'tc-content': TcContent
+    'tc-page-content': TcPageContent
   },
   head: {
     title: 'ハンドソープ、LOHACO - tksshj.com'

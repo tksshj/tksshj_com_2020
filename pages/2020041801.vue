@@ -3,9 +3,9 @@
     <div class="tc-scroller" :style="{ height: height + 'px' }"></div>
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
-    <tc-content
-      date="2020-04-18_01, scroll"
+    <tc-page-content
       title="資源ごみ、雨"
+      description="2020-04-18_01, scroll"
     >
       <p>
         資源ごみ、引きこもり生活で缶ビールの本数が増えたのですごい重要です。
@@ -20,18 +20,18 @@
       <p>
         働こ。
       </p>
-    </tc-content>
+    </tc-page-content>
 
   </div>
 </template>
 
 <script>
 import * as P5 from 'p5'
-import TcContent from '../components/tc_content.vue'
+import TcPageContent from '../components/tc_page_content.vue'
 
 export default {
   components: {
-    'tc-content': TcContent
+    'tc-page-content': TcPageContent
   },
   head: {
     title: '資源ごみ、雨 - tksshj.com'

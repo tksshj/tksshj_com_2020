@@ -2,9 +2,9 @@
   <div>
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
-    <tc-content
-      date="2020-04-17_02, animation"
+    <tc-page-content
       title="郵便局がなくなってる・・・！？"
+      description="2020-04-17_02, animation"
     >
       <p>
         上北沢というところに住んでいます。
@@ -14,7 +14,7 @@
       <p>
         しかし字が読みにくいですね。それと文章が長くなったらどうするべきか。
       </p>
-    </tc-content>
+    </tc-page-content>
 
   </div>
 </template>
@@ -22,14 +22,14 @@
 <script>
 import * as P5 from 'p5'
 import TWEEN from '@tweenjs/tween.js'
-import TcContent from '../components/tc_content.vue'
+import TcPageContent from '../components/tc_page_content.vue'
 
 export default {
   components: {
-    'tc-content': TcContent
+    'tc-page-content': TcPageContent
   },
   head: {
-    title: '2020-04-17_02 - tksshj.com'
+    title: '郵便局がなくなってる・・・！？ - tksshj.com'
   },
   data() {
     return {

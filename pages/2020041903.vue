@@ -1,11 +1,10 @@
 <template>
   <div>
-    <div class="tc-scroller" :style="{ height: height + 'px' }"></div>
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
-    <tc-content
-      date="2020-04-19_03, animation"
+    <tc-page-content
       title="スクロール失敗"
+      description="2020-04-19_03, animation"
     >
       <p>
         やっぱりテキスト読みにくいからなんか考えないと、、、って思うんですけど、
@@ -15,18 +14,18 @@
       <p>
         これも下にスクロールするつもりで作ってたけど結果こうなってしまいました。
       </p>
-    </tc-content>
+    </tc-page-content>
 
   </div>
 </template>
 
 <script>
 import * as P5 from 'p5'
-import TcContent from '../components/tc_content.vue'
+import TcPageContent from '../components/tc_page_content.vue'
 
 export default {
   components: {
-    'tc-content': TcContent
+    'tc-page-content': TcPageContent
   },
   head: {
     title: 'スクロール失敗 - tksshj.com'

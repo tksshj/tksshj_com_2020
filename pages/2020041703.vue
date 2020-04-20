@@ -2,9 +2,9 @@
   <div>
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
-    <tc-content
-      date="2020-04-17_03, animation"
+    <tc-page-content
       title="キリン一番搾り"
+      description="2020-04-17_03, animation"
     >
       <p>
         最近なんか19時にプシュっとするんですけど、
@@ -15,7 +15,7 @@
         同じネタなんですがちょっとアニメーションの方法を変えました。
         正方形塗りつぶしてるつもりなんですけど、うまくいってないですね。
       </p>
-    </tc-content>
+    </tc-page-content>
 
   </div>
 </template>
@@ -23,11 +23,11 @@
 <script>
 import * as P5 from 'p5'
 import TWEEN from '@tweenjs/tween.js'
-import TcContent from '../components/tc_content.vue'
+import TcPageContent from '../components/tc_page_content.vue'
 
 export default {
   components: {
-    'tc-content': TcContent
+    'tc-page-content': TcPageContent
   },
   head: {
     title: 'キリン一番絞り - tksshj.com'

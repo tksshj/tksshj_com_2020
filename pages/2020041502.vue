@@ -3,32 +3,31 @@
     <div class="tc-scroller" :style="{ height: height + 'px' }"></div>
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
-    <tc-content
-      date="2020-04-15_02"
+    <tc-page-content
       title="スクロールするしサークルもする"
+      description="2020-04-15_02"
     >
       <p>
         マグカップの取っ手はちょっと太くないと、なんか安心感が足りないです？か？
       </p>
       <p>
-        スクロール位置にあわせてp5.jsで円を描いています。
-        下にスクロールしてください。
+        下にスクロールすると、位置にあわせてサークルします。サークルするって動詞ほんとにありそうだけど知らないです。
       </p>
-    </tc-content>
+    </tc-page-content>
 
   </div>
 </template>
 
 <script>
 import * as P5 from 'p5'
-import TcContent from '../components/tc_content.vue'
+import TcPageContent from '../components/tc_page_content.vue'
 
 export default {
   components: {
-    'tc-content': TcContent
+    'tc-page-content': TcPageContent
   },
   head: {
-    title: '2020-04-15_02 - tksshj.com'
+    title: 'スクロールするしサークルもする - tksshj.com'
   },
   data() {
     return {

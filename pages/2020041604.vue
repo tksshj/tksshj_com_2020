@@ -2,9 +2,9 @@
   <div>
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
-    <tc-content
-      date="2020-04-16_04, animation"
+    <tc-page-content
       title="JIM BEAMとコーラ"
+      description="2020-04-16_04, animation"
     >
       <p>
         おそらくJIM BEAMとコーラ飲んでて酔ってきてるのでは？
@@ -12,7 +12,7 @@
       <p>
         線じゃなくて色で表現すればよかったのかな？
       </p>
-    </tc-content>
+    </tc-page-content>
 
   </div>
 </template>
@@ -20,11 +20,11 @@
 <script>
 import * as P5 from 'p5'
 import TWEEN from '@tweenjs/tween.js'
-import TcContent from '../components/tc_content.vue'
+import TcPageContent from '../components/tc_page_content.vue'
 
 export default {
   components: {
-    'tc-content': TcContent
+    'tc-page-content': TcPageContent
   },
   head: {
     title: 'JIM BEAMとコーラ - tksshj.com'

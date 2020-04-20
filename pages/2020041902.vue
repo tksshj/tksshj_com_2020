@@ -3,9 +3,9 @@
     <div class="tc-scroller" :style="{ height: height + 'px' }"></div>
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
-    <tc-content
-      date="2020-04-19_02, animation"
+    <tc-page-content
       title="サバ缶うんめぇ"
+      description="2020-04-19_02, animation"
     >
       <p>
         サーバーを管理する人をサバ缶といったりするっぽいんですが、
@@ -17,18 +17,18 @@
         下にスクロールで正方形のタイルを変化させるパターンと思ってたんですけど、
         色を描画ごとにランダムにしてみたらアニメーションになっちゃいました。
       </p>
-    </tc-content>
+    </tc-page-content>
 
   </div>
 </template>
 
 <script>
 import * as P5 from 'p5'
-import TcContent from '../components/tc_content.vue'
+import TcPageContent from '../components/tc_page_content.vue'
 
 export default {
   components: {
-    'tc-content': TcContent
+    'tc-page-content': TcPageContent
   },
   head: {
     title: 'サバ缶うんめぇ - tksshj.com'
