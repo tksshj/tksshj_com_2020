@@ -1,42 +1,18 @@
 <template>
   <div>
-    <div class="tc-scroller" :style="{ height: height + 'px' }"></div>
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
     <tc-page-content
-      title="テキスト表示なんとかした"
-      description="2020-04-20_02, scroll"
+      title="やっすいワイン、音楽つけたい"
+      description="2020-04-20_03, scroll"
     >
       <p>
-        ものすんごい意識の高い方法でテキスト表示をなんとかしましたねこれは、、、
+        今日はやっすいワインです。最近ワイン飲む側の人間になりました。
+        こういう図形を動かしたりするのを、リズムに合わせてやりたくなってきたので、
+        いろいろ調べています。
       </p>
       <p>
-        下にスクロールすると正方形が回転します。ブルブルしなくしただけです。
-        以下はテキストの表示テストです。
-      </p>
-      <p>
-        ここに長くて意識も最高でとてもためになるありがたい文章が入る。
-        ここに長くて意識も最高でとてもためになるありがたい文章が入る。
-        ここに長くて意識も最高でとてもためになるありがたい文章が入る。
-        ここに長くて意識も最高でとてもためになるありがたい文章が入る。
-        ここに長くて意識も最高でとてもためになるありがたい文章が入る。
-        ここに長くて意識も最高でとてもためになるありがたい文章が入る。
-        ここに長くて意識も最高でとてもためになるありがたい文章が入る。
-        ここに長くて意識も最高でとてもためになるありがたい文章が入る。
-        ここに長くて意識も最高でとてもためになるありがたい文章が入る。
-        ここに長くて意識も最高でとてもためになるありがたい文章が入る。
-        ここに長くて意識も最高でとてもためになるありがたい文章が入る。
-        ここに長くて意識も最高でとてもためになるありがたい文章が入る。
-        ここに長くて意識も最高でとてもためになるありがたい文章が入る。
-        ここに長くて意識も最高でとてもためになるありがたい文章が入る。
-        ここに長くて意識も最高でとてもためになるありがたい文章が入る。
-        ここに長くて意識も最高でとてもためになるありがたい文章が入る。
-        ここに長くて意識も最高でとてもためになるありがたい文章が入る。
-        ここに長くて意識も最高でとてもためになるありがたい文章が入る。
-        ここに長くて意識も最高でとてもためになるありがたい文章が入る。
-        ここに長くて意識も最高でとてもためになるありがたい文章が入る。
-        ここに長くて意識も最高でとてもためになるありがたい文章が入る。
-        ここに長くて意識も最高でとてもためになるありがたい文章が入る。
+        前の2つをあわせて自動運転です。結局長い文章書かねえんですわ。
       </p>
     </tc-page-content>
 
@@ -45,6 +21,7 @@
 
 <script>
 import * as P5 from 'p5'
+import TWEEN from '@tweenjs/tween.js'
 import TcPageContent from '../components/tc_page_content.vue'
 
 export default {
@@ -52,7 +29,7 @@ export default {
     'tc-page-content': TcPageContent
   },
   head: {
-    title: 'テキスト表示なんとかした - tksshj.com'
+    title: 'やっすいワイン、音楽つけたい - tksshj.com'
   },
   data() {
     return {
@@ -60,17 +37,38 @@ export default {
       height: 0,
       p5App: null,
       p5: null,
-      squares: []
+      squares: [],
+      y: 0,
+      forward: true,
     }
   },
   methods: {
     setupPage() {
       this.height = window.innerHeight * this.nPages
       this.p5App = new P5(this.sketch, 'tc-canvas-container')
+      this.setTween(0, false)
+    },
+    setTween(startY, inc) {
+      const coords = { y: 0 }
+      this.tween = new TWEEN.Tween(coords)
+                            .to({ y: this.height }, 10 * 1000)
+                            .easing(TWEEN.Easing.Sinusoidal.InOut)
+                            .onUpdate(() => {
+                              if (inc) {
+                                this.y = coords.y
+                              } else {
+                                this.y = this.height - coords.y
+                              }
+                            })
+                            .onComplete(() => {
+                              this.forward = inc
+                              this.setTween(coords.y, !inc)
+                            })
+                            .start()
     },
     position() {
       let h = window.innerHeight
-      let y = window.scrollY
+      let y = this.y
       return {
         page: Math.floor(y / h),
         progress: (y % h) / h
@@ -105,6 +103,8 @@ export default {
       }
     },
     draw() {
+      TWEEN.update()
+
       let position = this.position()
       this.p5.clear()
       this.p5.background(216)
@@ -114,8 +114,8 @@ export default {
         let square = this.squares[i]
         /* square.x = square.x + this.p5.random(-10, 10)
          * square.y = square.y + this.p5.random(-10, 10) */
-        let x = square.x //+ this.p5.random(-10, 10)
-        let y = square.y //+ this.p5.random(-10, 10)
+        let x = square.x + (this.forward ? 0 : this.p5.random(-10, 10))
+        let y = square.y + (this.forward ? 0 : this.p5.random(-10, 10))
 
         this.p5.push()
         this.p5.translate(x, y)
