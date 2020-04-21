@@ -26,6 +26,7 @@ export default {
   data() {
     return {
       pages: [
+        { path: "2020042102", description: "2020-04-21_02, animation", title: "ミニマルテクノ" },
         { path: "2020042101", description: "2020-04-21_01, animation", title: "ノイズ？ハイハット？" },
         { path: "2020042004", description: "2020-04-20_04, animation", title: "おと！" },
         { path: "2020042003", description: "2020-04-20_03, animation", title: "やっすいワイン、音楽つけたい" },
