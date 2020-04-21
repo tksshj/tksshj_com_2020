@@ -20,6 +20,9 @@ export default {
   components: {
     'tc-page-content': TcPageContent
   },
+  head: {
+    title: 'tksshj.com'
+  },
   data() {
     return {
       pages: [
