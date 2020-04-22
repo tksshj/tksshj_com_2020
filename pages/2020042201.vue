@@ -33,10 +33,6 @@
       <p class="tc-animation-description">
         アニメーションは再生タイミングをちょっと変えてみました。
       </p>
-      <p>
-        今日は結局シンセができなかったな、、、時間欲しい。
-      </p>
-
     </tc-page-content>
 
   </div>
