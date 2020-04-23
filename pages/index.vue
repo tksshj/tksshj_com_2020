@@ -26,6 +26,7 @@ export default {
   data() {
     return {
       pages: [
+        { path: "2020042302", description: "2020-04-23_02, scroll", title: "のり弁" },
         { path: "2020042301", description: "2020-04-23_01, scroll", title: "シンセから！だからまだ遠いわ！" },
         { path: "2020042201", description: "2020-04-22_01, animation, text", title: "チャット" },
         { path: "2020042102", description: "2020-04-21_02, scroll",    title: "ミニマルテクノ" },

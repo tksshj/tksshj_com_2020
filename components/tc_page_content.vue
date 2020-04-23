@@ -54,6 +54,9 @@ export default {
     }
   },
   methods: {
+    hideText() {
+      this.showText = false
+    },
     toggleText() {
       this.showText = !this.showText
     }
