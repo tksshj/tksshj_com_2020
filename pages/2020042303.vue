@@ -1,11 +1,10 @@
 <template>
   <div>
-    <div class="tc-scroller" :style="{ height: height + 'px' }"></div>
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
     <tc-page-content
       title="ドラムキットじゃんもうこれ！！！"
-      description="2020-04-23_03, scroll"
+      description="2020-04-23_03, animation"
     >
       <p>
         "tone.js hi-hat"とかでググって出てきたソース、tone.jsのサイトのソースだったんですけど、
@@ -58,7 +57,6 @@ export default {
       nVerticalTiles: 0,
       cols: [],
       y: 0,
-
       openHiHat: null,
       closedHiHat: null,
       kick: null,
@@ -67,11 +65,6 @@ export default {
     }
   },
   methods: {
-    kickButtonClicked() {
-      this.setupSynth()
-      this.kickEnvelope.triggerAttackRelease('8n')
-      this.kickSnapEnv.triggerAttackRelease('8n')
-    },
     openHiHatButtonClicked() {
       this.setupSynth()
       this.openHiHat.triggerAttackRelease('8n')
@@ -79,6 +72,11 @@ export default {
     closedHiHatButtonClicked() {
       this.setupSynth()
       this.closedHiHat.triggerAttackRelease('8n')
+    },
+    kickButtonClicked() {
+      this.setupSynth()
+      this.kickEnvelope.triggerAttackRelease('8n')
+      this.kickSnapEnv.triggerAttackRelease('8n')
     },
     setupSynth() {
       if (!this.toneStated) {
@@ -185,6 +183,7 @@ export default {
       let isPortrait = this.p5.windowWidth < this.p5.windowHeight
       let nHorizontalTiles = isPortrait ? 3 : parseInt(this.p5.windowWidth / 256) + 1
       let tileWidth = this.p5.windowWidth / nHorizontalTiles
+      nHorizontalTiles = nHorizontalTiles + 2
       this.nVerticalTiles = parseInt(this.p5.windowHeight / tileWidth) + 3
 
       for (let row = 0; row < this.nVerticalTiles; row++) {
@@ -222,18 +221,10 @@ export default {
         if (window.innerHeight * 0.5 + w < y) {
           square.row = square.row - this.nVerticalTiles
         }
-
-
         let p = (position.progress < 0.5 ? (1.0 - position.progress) : position.progress)
-
         this.p5.translate(square.x, y)
         this.p5.rotate(Math.PI * (position.progress + position.page) * 0.5)
-        this.p5.rotate(Math.PI * p * 0.5)
-        /* this.p5.translate(square.width * -0.5, square.width * -0.5) */
-
-        /* this.p5.fill(255 - Math.abs(square.row % this.nVerticalTiles) * 8 - square.col * 8) */
-        /* this.p5.fill(255 - (square.row % 2) * 16) */
-        this.p5.square(0, 0, square.width * (position.progress < 0.5 ? (1.0 - position.progress) : position.progress))
+        this.p5.square(0, 0, square.width * p)
         this.p5.pop()
       }
     },
