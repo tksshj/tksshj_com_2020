@@ -19,6 +19,7 @@ export default {
     ],
     link: [
       { href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;500&display=block', rel: 'stylesheet' },
+      { href: "https://fonts.googleapis.com/icon?family=Material+Icons", rel: "stylesheet" },
       { href: '/favicons/favicon.ico', rel:'shortcut icon', type:'image/vnd.microsoft.icon' },
       { href: '/favicons/favicon.ico', rel:'icon', type: 'image/vnd.microsoft.icon' },
       { href: '/favicons/apple-touch-icon-57x57.png', rel:'apple-touch-icon', sizes: '57x57' },
