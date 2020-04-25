@@ -26,6 +26,7 @@ export default {
   data() {
     return {
       pages: [
+        { path: "2020042502", description: "2020-04-25_02, animation, text", title: "力が欲しいか" },
         { path: "2020042501", description: "2020-04-25_01, animation", title: "スピーカーほしいけど" },
         { path: "2020042304", description: "2020-04-23_04, animation", title: "あれ・・・？" },
         { path: "2020042303", description: "2020-04-23_03, animation", title: "ドラムキットじゃんもうこれ！！！" },
