@@ -5,7 +5,7 @@
     <tc-page-content
       ref="tcPageContent"
       title="スピーカーほしいけど"
-      description="2020-04-23_02, animation"
+      description="2020-04-25_01, animation"
     >
       <p>
         前回リズムと画面を同期させてみて、やっぱ最初から思ったに通りに行かないよなーと思いました。
@@ -32,7 +32,7 @@ export default {
     'tc-page-content': TcPageContent
   },
   head: {
-    title: 'のり弁 - tksshj.com'
+    title: 'スピーカーほしいけど - tksshj.com'
   },
   data() {
     return {

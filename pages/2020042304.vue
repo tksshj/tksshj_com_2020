@@ -34,7 +34,7 @@ export default {
     'tc-page-content': TcPageContent
   },
   head: {
-    title: 'ドラムキットじゃんもうこれ！！！ - tksshj.com'
+    title: 'あれ・・・？ - tksshj.com'
   },
   data() {
     return {
