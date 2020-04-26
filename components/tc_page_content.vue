@@ -9,8 +9,8 @@
 
     <main ref="tcMain">
       <article>
-        <h1 class="tc-title" v-if="title">{{ title }}</h1>
-        <p  class="tc-description" v-if="description">{{ description }}</p>
+        <h1 class="tc-title" v-if="$route.name != 'index'">{{ page.title }}</h1>
+        <p  class="tc-description" v-if="$route.name != 'index'">{{ page.description }}</p>
         <div class="tc-article-content">
           <slot></slot>
         </div>
@@ -20,6 +20,14 @@
 
     <footer ref="tcFooter" v-show="showFooter">
       <p class="tc-underline" @click="toggleText">{{ showText ? 'テキストを隠す' :  'テキストを表示する' }}</p>
+
+      <a :class="prevButtonClass" :href="prevId">
+        <i class="material-icons">keyboard_arrow_left</i><p>前へ</p>
+      </a>
+      <a :class="nextButtonClass" :href="nextId">
+        <p>次へ</p><i class="material-icons">keyboard_arrow_right</i>
+      </a>
+
     </footer>
 
 
@@ -27,13 +35,18 @@
 </template>
 
 <script>
+import TcPages from './tc_pages.js'
+
 export default {
-  props: [
-    'title',
-    'description'
-  ],
   data() {
     return {
+      page: TcPages.page(this.$route.name),
+      prev: TcPages.prev(this.$route.name),
+      next: TcPages.next(this.$route.name),
+      prevId: null,
+      nextId: null,
+      prevButtonClass: 'tc-bottom-button',
+      nextButtonClass: 'tc-bottom-button',
       showText: false,
       showFooter: false
     }
@@ -62,6 +75,17 @@ export default {
     }
   },
   mounted() {
+    this.prevId = this.prev == null ? null : this.prev.id
+    this.nextId = this.next == null ? null : this.next.id
+    this.prevButtonClass = 'tc-bottom-button' + (this.prev == null ? ' disabled' : '')
+    this.nextButtonClass = 'tc-bottom-button' + (this.next == null ? ' disabled' : '')
+
+    if (this.$route.name == 'index') {
+      document.title = 'tksshj.com'
+    } else {
+      document.title = this.page.title + ' - tksshj.com'
+    }
+
     setTimeout(() => {
       this.showText = true
       this.showFooter = true
@@ -138,12 +162,26 @@ export default {
     left: 0;
     bottom: 0;
     display: flex;
+    justify-content: space-around;
     align-items: center;
 
     background-color: rgba(255, 255, 255, 0);
     transition: background-color 0.4s;
     &.show {
       background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .tc-bottom-button {
+      display: flex;
+      align-items: center;
+      &.disabled {
+        opacity: 0.2;
+      }
+      i {
+        padding: 2px 0 0;
+        font-size: 36px;
+        display: block;
+      }
     }
   }
 }
