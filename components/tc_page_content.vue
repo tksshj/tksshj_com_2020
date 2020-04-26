@@ -21,10 +21,10 @@
     <footer ref="tcFooter" v-show="showFooter">
       <p class="tc-underline" @click="toggleText">{{ showText ? 'テキストを隠す' :  'テキストを表示する' }}</p>
 
-      <a :class="prevButtonClass" :href="prevId">
+      <a :class="prevButtonClass" :href="prevPath">
         <i class="material-icons">keyboard_arrow_left</i><p>前へ</p>
       </a>
-      <a :class="nextButtonClass" :href="nextId">
+      <a :class="nextButtonClass" :href="nextPath">
         <p>次へ</p><i class="material-icons">keyboard_arrow_right</i>
       </a>
 
@@ -43,8 +43,8 @@ export default {
       page: TcPages.page(this.$route.name),
       prev: TcPages.prev(this.$route.name),
       next: TcPages.next(this.$route.name),
-      prevId: null,
-      nextId: null,
+      prevPath: null,
+      nextPath: null,
       prevButtonClass: 'tc-bottom-button',
       nextButtonClass: 'tc-bottom-button',
       showText: false,
@@ -75,8 +75,8 @@ export default {
     }
   },
   mounted() {
-    this.prevId = this.prev == null ? null : this.prev.id
-    this.nextId = this.next == null ? null : this.next.id
+    this.prevPath = this.prev == null ? null : ('/' + this.prev.id)
+    this.nextPath = this.next == null ? null : ('/' + this.next.id)
     this.prevButtonClass = 'tc-bottom-button' + (this.prev == null ? ' disabled' : '')
     this.nextButtonClass = 'tc-bottom-button' + (this.next == null ? ' disabled' : '')
 
