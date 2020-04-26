@@ -9,8 +9,8 @@
 
     <main ref="tcMain">
       <article>
-        <h1 class="tc-title" v-if="$route.name != 'index'">{{ page.title }}</h1>
-        <p  class="tc-description" v-if="$route.name != 'index'">{{ page.description }}</p>
+        <h1 class="tc-title">{{ page.title }}</h1>
+        <p  class="tc-description">{{ page.description }}</p>
         <div class="tc-article-content">
           <slot></slot>
         </div>
@@ -80,11 +80,7 @@ export default {
     this.prevButtonClass = 'tc-bottom-button' + (this.prev == null ? ' disabled' : '')
     this.nextButtonClass = 'tc-bottom-button' + (this.next == null ? ' disabled' : '')
 
-    if (this.$route.name == 'index') {
-      document.title = 'tksshj.com'
-    } else {
-      document.title = this.page.title + ' - tksshj.com'
-    }
+    document.title = this.page.title + ' - tksshj.com'
 
     setTimeout(() => {
       this.showText = true

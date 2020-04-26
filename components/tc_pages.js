@@ -3,7 +3,7 @@ export default {
     {
       id: "2020042601",
       title: "次へ！やっぱ前へ！",
-      description: "2020-04-26_01, animation, text"
+      description: "2020-04-26_01, animation"
     },
     {
       id: "2020042502",
