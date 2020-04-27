@@ -1,9 +1,14 @@
 export default {
   pages: [
     {
+      id: "2020042703",
+      title: "意外とやらない",
+      description: "2020-04-27_03, animation, text"
+    },
+    {
       id: "2020042702",
       title: "HHKB",
-      description: "2020-04-27_02, scroll, text"
+      description: "2020-04-27_02, scroll"
     },
     {
       id: "2020042701",
