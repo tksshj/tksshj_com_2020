@@ -17,13 +17,13 @@
       </p>
       <p>
         <button @click="openHiHatButtonClicked">
-          <i class="material-icons">play_arrow</i><div>Open Hi-hat </div>
+          <i class="material-icons">play_arrow</i>Open Hi-hat
         </button>
         <button @click="closedHiHatButtonClicked">
-          <i class="material-icons">play_arrow</i><div>Closed Hi-hat</div>
+          <i class="material-icons">play_arrow</i>Closed Hi-hat
         </button>
         <button @click="kickButtonClicked">
-          <i class="material-icons">play_arrow</i><div>Kick</div>
+          <i class="material-icons">play_arrow</i>Kick
         </button>
       </p>
       <p>
@@ -36,7 +36,7 @@
 
 <script>
 import * as P5 from 'p5'
-import * as Tone from "tone";
+import * as Tone from "tone"
 import TWEEN from '@tweenjs/tween.js'
 import TcPageContent from '../components/tc_page_content.vue'
 

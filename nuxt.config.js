@@ -3,6 +3,9 @@ export default {
   css: [
     '~/assets/application.scss'
   ],
+  plugins: [
+    '~/plugins/components.js'
+  ],
   modules: [
     ['@nuxtjs/google-analytics', {
       id: 'UA-20744647-2'

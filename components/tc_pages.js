@@ -1,6 +1,11 @@
 export default {
   pages: [
     {
+      id: "2020042801",
+      title: "距離感？",
+      description: "2020-04-28_01, sound"
+    },
+    {
       id: "2020042703",
       title: "意外とやらない",
       description: "2020-04-27_03, animation, text"

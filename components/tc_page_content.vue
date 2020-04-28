@@ -36,8 +36,12 @@
 
 <script>
 import TcPages from './tc_pages.js'
+import TcButton from './tc_button.vue'
 
 export default {
+  components: {
+    'tc-button': TcButton
+  },
   data() {
     return {
       page: TcPages.page(this.$route.name),
@@ -166,7 +170,9 @@ export default {
     &.show {
       background-color: rgba(255, 255, 255, 0.9);
     }
-
+    .tc-underline {
+      text-decoration: underline;
+    }
     .tc-bottom-button {
       display: flex;
       align-items: center;
