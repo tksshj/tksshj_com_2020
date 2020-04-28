@@ -44,7 +44,7 @@ export default {
   },
   data() {
     return {
-      nPages: 4,
+      nPages: 10,
       height: 0,
       p5App: null,
       p5: null,
@@ -60,11 +60,9 @@ export default {
     },
     setTween(startY, inc) {
       let coords = { y: 0 }
-      let t = this.p5.random(20, 40)
-      let h = this.p5.random(this.height)
       this.tween = new TWEEN.Tween(coords)
-                            .to({ y: h }, t * 100)
-                            .easing(TWEEN.Easing.Sinusoidal.InOut)
+                            .to({ y: this.height }, 10 * 1000)
+                            .easing(TWEEN.Easing.Linear.None)
                             .onUpdate(() => {
                               if (inc) {
                                 this.y = startY + coords.y
