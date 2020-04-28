@@ -12,9 +12,7 @@
         やりたいことには近づいている気がするけど厳しいなこれ。
       </p>
       <p>
-        <button @click="playButtonClicked">
-          <i class="material-icons">play_arrow</i><div>Play</div>
-        </button>
+        <tc-button @click="playButtonClicked"><tc-icon>play_arrow</tc-icon>Play</tc-button>
       </p>
       <p>
         ううううううん、なんかリズムが、、、

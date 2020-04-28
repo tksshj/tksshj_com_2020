@@ -16,15 +16,15 @@
         スネアもいるかもなあ、まあひとまず。
       </p>
       <p>
-        <button @click="openHiHatButtonClicked">
-          <i class="material-icons">play_arrow</i>Open Hi-hat
-        </button>
-        <button @click="closedHiHatButtonClicked">
-          <i class="material-icons">play_arrow</i>Closed Hi-hat
-        </button>
-        <button @click="kickButtonClicked">
-          <i class="material-icons">play_arrow</i>Kick
-        </button>
+        <tc-button @click="openHiHatButtonClicked">
+          <tc-icon>play_arrow</tc-icon>Open Hi-hat
+        </tc-button>
+        <tc-button @click="closedHiHatButtonClicked">
+          <tc-icon>play_arrow</tc-icon>Closed Hi-hat
+        </tc-button>
+        <tc-button @click="kickButtonClicked">
+          <tc-icon>play_arrow</tc-icon>Kick
+        </tc-button>
       </p>
       <p>
         アニメーションはなんかさぼりっていうか、ひとつまえのスクロールを回転させていて、なんか好きな感じにできなかった。

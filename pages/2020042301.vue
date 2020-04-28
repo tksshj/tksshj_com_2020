@@ -14,14 +14,14 @@
         遠いかもこれは。でもシンセいじれるのカッコいいから頑張ります。
       </p>
       <p>
-        <button @click="playButtonClicked">
+        <tc-button @click="playButtonClicked">
           <template v-if="playerState == 'stopped'">
-            <i class="material-icons">play_arrow</i><div>Play</div>
+            <tc-icon>play_arrow</tc-icon>Play
           </template>
           <template v-if="playerState == 'started'">
-            <i class="material-icons">stop</i><div>Stop</div>
+            <tc-icon>stop</tc-icon>Stop
           </template>
-        </button>
+        </tc-button>
       </p>
       <p>
         仕事でスロットみたいなの作れる？って話があったので、ちょっとそれっぽくしました。
@@ -176,16 +176,5 @@ export default {
   top: 0;
   width: 100%;
   height: 100%;
-}
-.tc-play-button-row {
-  padding: 8px 0 32px;
-  display: flex;
-  justify-content: center;
-  .tc-play-button {
-    width: 97.5%;
-    padding: 4px 16px;
-    text-align: center;
-    border: solid 1px #5F5F7F;
-  }
 }
 </style>
