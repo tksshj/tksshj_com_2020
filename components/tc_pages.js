@@ -1,6 +1,11 @@
 export default {
   pages: [
     {
+      id: "2020043001",
+      title: "Magic Keyboard",
+      description: "2020-04-30_01, animation"
+    },
+    {
       id: "2020042801",
       title: "シンセわからんすぎるな？",
       description: "2020-04-28_01, animation"
