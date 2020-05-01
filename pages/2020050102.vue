@@ -12,7 +12,7 @@
         FPSとかちゃんと合わせたつもりだけど、そもそも仕組み的にずれますね。
       </p>
       <p>
-        テキスト隠して見て欲しいです。
+        音を出してテキスト隠して見て欲しいです。
       </p>
     </tc-page-content>
 
@@ -38,7 +38,8 @@ export default {
       p5: null,
       squares: [],
       r: 0,
-      inc: 0
+      inc: 0,
+      clearCount: 0
     }
   },
   methods: {
@@ -57,9 +58,15 @@ export default {
         Tone.Transport.scheduleRepeat((time) => {
           Tone.Draw.schedule(() => {
             this.inc = (this.inc + 1) % 8
-            if (this.inc == 0) {
-              this.fillColor = 255
+
+            if (this.inc == 6) {
+              this.clearCount = this.clearCount + 1
+              if (this.clearCount % 2 == 0) {
+                console.log(this.clearCount)
+                this.p5.clear()
+              }
             }
+
           }, time)
         }, "8n", 0);
         this.player = new Tone.Player("/2020050102.wav", () => {
@@ -107,10 +114,7 @@ export default {
       this.p5.stroke(216)
       this.p5.strokeWeight(1)
 
-      if (this.inc == 6) {
-        this.p5.clear()
-      }
-      this.r = this.r + Math.PI * 60 / 128.0 * (this.inc == 0 || this.inc == 2 || this.inc == 3 ? -1 : 1)
+      this.r = this.r + Math.PI * 72 / 128.0 * (this.inc == 0 || this.inc == 2 || this.inc == 3 ? -1 : 1)
 
       for (let i = 0; i < this.squares.length; i++) {
         let square = this.squares[i]
@@ -131,6 +135,9 @@ export default {
   },
   beforeDestroy() {
     this.p5.remove()
+    if (this.player) {
+      this.player.stop()
+    }
   }
 }
 </script>
