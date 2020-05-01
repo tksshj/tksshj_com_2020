@@ -1,16 +1,29 @@
-<template>
+<<template>
   <div>
     <div class="tc-scroller" :style="{ height: height + 'px' }"></div>
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
     <tc-page-content>
       <p>
-        HHKBと並行して<a href="https://www.apple.com/jp/shop/product/MLA22J/A/magic-keyboard-%E6%97%A5%E6%9C%AC%E8%AA%9Ejis">
-        AppleのMagic Keyboard</a>も使っています。このキーの配置でHHKBのキーだったら最高のような気がする。
-        なんか自作とかで実現できるものなんだろうか。それこそ時間ないか、、、
+        シンセわからんすぎるので、理解できるなにかをやってみようと思って、
+        <a href="https://www.korg.com/jp/products/software/korg_gadget/">KORG Gadget</a>というアプリで遊んでいます。
+        思ったより簡単にそれっぽいものができて、楽しすぎる。
+        学んでる感じゼロ、酔っ払って変な踊りするだけの時間になってしまう問題があります。
+      </p>
+      <p>
+        ドラムはプリセットの音ですぐにいい感じのループが作れるので、
+        次はカッコいいベースを、、、というところでエンベロープとかでてきて、
+        もしかしたら学びもあるか？？？になりたいけど圧倒的に遊んでる感が強い。
+      </p>
+      <p>
+        KORG Gadgetで音楽作ってp5.jsで同期もできそうなんだけど、
+        公開するには音どうするか問題がまだあるのでどうするか。
+        もう少し遊んで考えます。遊んでるの強調がすごいなこの文章。楽しいからな。
       </p>
       <p class="tc-animation-description">
-        前のに少し回転入れただけです。やっぱなんかリズムが見える、、、今日こそシンセやるぞ。
+        アニメーションは前のに更に別の回転入れただけです。
+        いま正方形を個別にオブジェクトで持っているのと、描画タイミングで計算するのと、
+        なんかソースも微妙な感じなので少し整理しないと。
       </p>
     </tc-page-content>
 
@@ -110,6 +123,8 @@ export default {
 
       this.p5.stroke(216)
       this.p5.strokeWeight(1)
+
+        this.p5.rotate(position.progress < 0.5 ? position.progress : 1.0 - position.progress)
 
       for (let i = 0; i < this.squares.length; i++) {
         let square = this.squares[i]

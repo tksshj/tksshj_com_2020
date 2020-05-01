@@ -3,12 +3,12 @@
     <h1>dev</h1>
 
     <div class="tc-slider-row">
-      <div class="tc-slider"><input type="range" v-model="sliderValue" min=0 max=100></div>
+      <tc-slider v-model="sliderValue" min=0 max=100></tc-slider>
       <p>{{ sliderValue }}</p>
     </div>
 
     <div>
-      <button @click="buttonClicked"><i class="material-icons">play_arrow</i>Play</button>
+      <tc-button @click="buttonClicked"><i class="material-icons">play_arrow</i>Play</tc-button>
     </div>
 
   </div>
@@ -16,6 +16,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      sliderValue: 0
+    }
+  }
 }
 </script>
 

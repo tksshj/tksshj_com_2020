@@ -1,6 +1,11 @@
 export default {
   pages: [
     {
+      id: "2020050101",
+      title: "KORG Gadget",
+      description: "2020-05-01_01, animation"
+    },
+    {
       id: "2020043001",
       title: "Magic Keyboard",
       description: "2020-04-30_01, animation"
