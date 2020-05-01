@@ -31,9 +31,6 @@ export default {
   components: {
     'tc-page-content': TcPageContent
   },
-  head: {
-    title: 'あれ・・・？ - tksshj.com'
-  },
   data() {
     return {
       nPages: 10,

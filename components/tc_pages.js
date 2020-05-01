@@ -1,6 +1,11 @@
 export default {
   pages: [
     {
+      id: "2020050102",
+      title: "1小節",
+      description: "2020-05-01_02, animation, sound"
+    },
+    {
       id: "2020050101",
       title: "KORG Gadget",
       description: "2020-05-01_01, animation"
