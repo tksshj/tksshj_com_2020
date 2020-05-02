@@ -8,11 +8,9 @@
         <tc-button @click="playButtonClicked" v-if="playing"><tc-icon>pause</tc-icon>Pause</tc-button>
       </p>
       <p>
-        KORG Gadgetで1小節、ドラムとベースだけ作って書き出して、tone.jsで同期させて見たけど前よりは良くなった。
-        FPSとかちゃんと合わせたつもりだけど、そもそも仕組み的にずれますね。
-      </p>
-      <p>
-        音を出してテキスト隠して見て欲しいです。
+        8小節を1ループ、音楽がループするところは違和感ありますね。
+        アニメーションはなんか派手にするとリズムにあっているように見える？
+        っていうか曲良くないですか？笑！結構ジンビームでしたね。
       </p>
     </tc-page-content>
 
@@ -36,10 +34,8 @@ export default {
       player: null,
       p5App: null,
       p5: null,
-      squares: [],
-      r: 0,
-      inc: 0,
-      clearCount: 0
+      n: 0,
+      rects: []
     }
   },
   methods: {
@@ -57,19 +53,30 @@ export default {
         Tone.Transport.bpm.rampTo(128, 4)
         Tone.Transport.scheduleRepeat((time) => {
           Tone.Draw.schedule(() => {
-            this.inc = (this.inc + 1) % 8
 
-            if (this.inc == 6) {
-              this.clearCount = this.clearCount + 1
-              if (this.clearCount % 2 == 0) {
-                console.log(this.clearCount)
-                this.p5.clear()
+            if (this.n % 2 == 0) {
+              let rect = {
+                color: this.p5.random(200, 255),
+                x: this.p5.windowWidth * -0.5,
+                y: this.p5.windowHeight * -0.5,
+                w: this.p5.windowWidth,
+                h: this.p5.windowHeight,
               }
+              this.p5.fill(rect.color)
+              this.p5.rect(rect.x, rect.y, rect.w, rect.h)
+              this.rects.push(rect)
             }
-
+            console.log(this.n)
+            if (this.n == 63) {
+              this.n = 0
+              this.rects = []
+              this.p5.clear()
+            } else {
+              this.n = this.n + 1
+            }
           }, time)
         }, "8n", 0);
-        this.player = new Tone.Player("/2020050102.wav", () => {
+        this.player = new Tone.Player("/2020050201.mp3", () => {
           this.player.loop = true
           this.player.sync().start()
         }).toMaster()
@@ -89,41 +96,25 @@ export default {
       let width = window.innerWidth
       let height = window.innerHeight
       this.p5.createCanvas(width, height, this.p5.WEBGL)
-
       this.p5.frameRate(32)
-
-      let isPortrait = this.p5.windowWidth < this.p5.windowHeight
-      let nHorizontalTiles = isPortrait ? 3 : parseInt(this.p5.windowWidth /320) + 1
-      let tileWidth = this.p5.windowWidth / nHorizontalTiles
-      let nVerticalTiles = parseInt(this.p5.windowHeight / tileWidth) + 3
-      nHorizontalTiles = nHorizontalTiles + 1
-
-      for (let row = 0; row < nVerticalTiles; row++) {
-        for (let col = 0; col < nHorizontalTiles; col++) {
-          this.squares.push({
-            row: row,
-            col: col,
-            x: tileWidth * (col - nHorizontalTiles * 0.5),
-            y: tileWidth * row - this.p5.windowHeight * 0.5,
-            width: tileWidth
-          })
-        }
-      }
     },
     draw() {
-      this.p5.stroke(216)
-      this.p5.strokeWeight(1)
-
-      this.r = this.r + Math.PI * 60 / 128.0 * (this.inc == 0 || this.inc == 2 || this.inc == 3 ? -1 : 1)
-
-      for (let i = 0; i < this.squares.length; i++) {
-        let square = this.squares[i]
-        this.p5.push()
-        this.p5.translate(square.x, square.y)
-        this.p5.rotate(this.r)
-        this.p5.translate(square.width * -0.5 * 0.9, square.width * -0.5 * 0.9)
-        this.p5.square(0, 0, square.width * 0.9)
-        this.p5.pop()
+      this.p5.clear();
+      let removeIndex = -1
+      for (let i = 0; i < this.rects.length; i++) {
+        let rect = this.rects[i]
+        this.p5.fill(rect.color)
+        this.p5.rect(rect.x, rect.y, rect.w, rect.h)
+        rect.x = rect.x + rect.w * 0.05
+        rect.y = rect.y + rect.h * 0.05 * (i % 2 == 0 ? -1 : 2.0)
+        rect.w = rect.w * 0.9
+        rect.h = rect.h * 0.9
+        if (rect.w < 0.01) {
+          removeIndex = i
+        }
+      }
+      if (-1 < removeIndex) {
+        this.rects.splice(0, removeIndex + 1)
       }
     },
     windowResized() {

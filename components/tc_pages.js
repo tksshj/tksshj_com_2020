@@ -1,6 +1,11 @@
 export default {
   pages: [
     {
+      id: "2020050201",
+      title: "8小節ベロベロ",
+      description: "2020-05-02_01, animation, sound"
+    },
+    {
       id: "2020050102",
       title: "1小節",
       description: "2020-05-01_02, animation, sound"
