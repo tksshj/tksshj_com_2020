@@ -1,6 +1,11 @@
 export default {
   pages: [
     {
+      id: "2020050401",
+      title: "改修かァ？",
+      description: "2020-05-04_01, scroll"
+    },
+    {
       id: "2020050301",
       title: "ハンバーグ",
       description: "2020-05-03_01, scroll"
