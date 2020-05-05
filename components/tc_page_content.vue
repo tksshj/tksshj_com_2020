@@ -19,7 +19,17 @@
 
 
     <footer ref="tcFooter" v-show="showFooter">
-      <p class="tc-underline" @click="toggleText">{{ showText ? 'テキストを隠す' :  'テキストを表示する' }}</p>
+
+      <p class="tc-underline" @click="toggleText" v-if="!playButton">
+        {{ showText ? 'テキストを隠す' :  'テキストを表示する' }}
+      </p>
+
+      <p v-if="playButton">
+        <tc-button @click="playButtonClicked" v-if="!playing"><tc-icon>play_arrow</tc-icon>Play</tc-button>
+        <tc-button @click="playButtonClicked" v-if="playing"><tc-icon>pause</tc-icon>Pause</tc-button>
+      </p>
+
+
 
       <a :class="prevButtonClass" :href="prevPath">
         <i class="material-icons">keyboard_arrow_left</i><p>前へ</p>
@@ -42,6 +52,9 @@ export default {
   components: {
     'tc-button': TcButton
   },
+  props: [
+    'playButton'
+  ],
   data() {
     return {
       page: TcPages.page(this.$route.name),
@@ -52,7 +65,8 @@ export default {
       prevButtonClass: 'tc-bottom-button',
       nextButtonClass: 'tc-bottom-button',
       showText: false,
-      showFooter: false
+      showFooter: false,
+      playing: false
     }
   },
   watch: {
@@ -76,6 +90,10 @@ export default {
     },
     toggleText() {
       this.showText = !this.showText
+    },
+    playButtonClicked() {
+      this.playing = !this.playing
+      this.showText = !this.playing
     }
   },
   mounted() {

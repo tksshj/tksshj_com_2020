@@ -3,15 +3,13 @@
     <div class="tc-scroller" :style="{ height: height + 'px' }"></div>
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
-    <tc-page-content>
+    <tc-page-content :playButton="true">
       <p>
-        どこに向かっているのかというのはあるんですが、tone.jsでもう少し遊ばないとですね。
-        ってかKORG Gadgetでなんかループみたいなの作って酔って踊って寝るっていうのが、いい生活すぎて困りますね。
+        「テキストを隠す」を「Play」にするなんてハイセンスね！
       </p>
-      <p class="tc-animation-description">
-        アニメーション、かなり思った通りになったんですけど、だんだん難しくなってきてて、こりゃ酔えねえわ。
-        ちがう酔うのはできる、あんまり進まねえわ、ってところか。
-        でも考えてたのが完成したら好きな感じで満足。
+      <p>
+        スクロールからアニメーションに変更しただけです。Playボタンだけどこの画面は音楽ないし意味がほとんどないですね。
+        Pauseしないし、笑。
       </p>
     </tc-page-content>
 
@@ -20,6 +18,7 @@
 
 <script>
 import * as P5 from 'p5'
+import TWEEN from '@tweenjs/tween.js'
 import TcPageContent from '../components/tc_page_content.vue'
 
 export default {
@@ -35,16 +34,39 @@ export default {
       tileWidth: 0,
       nHorizontalTiles: 0,
       nVerticalTiles: 0,
+      y: 0
     }
   },
   methods: {
     setupPage() {
       this.height = window.innerHeight * this.nPages
       this.p5App = new P5(this.sketch, 'tc-canvas-container')
+      this.setTween(0, true)
+    },
+    setTween(startY, inc) {
+      let coords = { y: 0 }
+      this.tween = new TWEEN.Tween(coords)
+                            .to({ y: this.height }, 10 * 1000)
+                            .easing(TWEEN.Easing.Sinusoidal.InOut)
+                            .onUpdate(() => {
+                              if (inc) {
+                                this.y = startY + coords.y
+                              } else {
+                                this.y = startY - coords.y
+                              }
+                            })
+                            .onComplete(() => {
+                              if (inc) {
+                                this.setTween(startY + coords.y, !inc)
+                              } else {
+                                this.setTween(startY - coords.y, !inc)
+                              }
+                            })
+                            .start()
     },
     position() {
       let h = window.innerHeight
-      let y = window.window.scrollY
+      let y = this.y
       return {
         page: Math.floor(y / h),
         progress: (y % h) / h
@@ -65,7 +87,7 @@ export default {
       this.nHorizontalTiles = isPortrait ? 5 : parseInt(this.p5.windowWidth / 192)
       this.tileWidth = this.p5.windowWidth / this.nHorizontalTiles
       this.nHorizontalTiles = this.nHorizontalTiles + 2
-      this.nVerticalTiles = parseInt(this.p5.windowHeight / this.tileWidth) + 2
+      this.nVerticalTiles = parseInt(this.p5.windowHeight / this.tileWidth) + 4
     },
     translateTile(page, progress, row, col) {
       this.p5.translate(this.tileWidth * col, this.tileWidth * row)
@@ -97,6 +119,7 @@ export default {
       return 255 - ((pos + page * 3) % 4) * 8
     },
     draw() {
+      TWEEN.update()
       let position = this.position()
       let page = position.page
       let progress = position.progress
