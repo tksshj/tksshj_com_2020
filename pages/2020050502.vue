@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div class="tc-scroller" :style="{ height: height + 'px' }"></div>
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
     <tc-page-content :playButton="true">
@@ -9,7 +8,7 @@
       </p>
       <p>
         スクロールからアニメーションに変更しただけです。Playボタンだけどこの画面は音楽ないし意味がほとんどないですね。
-        Pauseしないし、笑。
+        Pauseしないし。いやPlayもしないか、笑。
       </p>
     </tc-page-content>
 
