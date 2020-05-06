@@ -94,6 +94,7 @@ export default {
     playButtonClicked() {
       this.playing = !this.playing
       this.showText = !this.playing
+      this.$emit('play-button-clicked', this.playing)
     }
   },
   mounted() {
