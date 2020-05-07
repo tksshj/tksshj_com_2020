@@ -1,6 +1,16 @@
 export default {
   pages: [
     {
+      id: "2020050801",
+      title: "やる気のタネ",
+      description: "2020-05-08_01, animation"
+    },
+    {
+      id: "2020050601",
+      title: "80 BPM",
+      description: "2020-05-06_01, animation, sound"
+    },
+    {
       id: "2020050601",
       title: "80 BPM",
       description: "2020-05-06_01, animation, sound"
