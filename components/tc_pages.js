@@ -11,11 +11,6 @@ export default {
       description: "2020-05-06_01, animation, sound"
     },
     {
-      id: "2020050601",
-      title: "80 BPM",
-      description: "2020-05-06_01, animation, sound"
-    },
-    {
       id: "2020050502",
       title: "待望のPlayボタン",
       description: "2020-05-05_02, animation"
