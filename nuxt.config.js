@@ -70,8 +70,8 @@ export default {
   hooks: {
     generate: {
       routeCreated(params) {
-        console.log('hooks:generate:routeCreated')
-        console.log(params)
+        /* console.log('hooks:generate:routeCreated')
+         * console.log(params) */
 
         if (!params.route.startsWith('/202') && params.route != '/') {
           return;
@@ -114,7 +114,11 @@ export default {
         titleNode.textContent = title
         head.prepend(titleNode)
 
-        fs.writeFileSync(params.path, dom.serialize())
+        let metaNode = document.createElement('meta')
+        metaNode.setAttribute('charset', 'utf-8')
+        head.prepend(metaNode)
+
+        fs.writeFileSync(params.path, dom.serialize(), 'utf-8')
       }
     }
   }
