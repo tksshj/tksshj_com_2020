@@ -1,6 +1,11 @@
 export default {
   pages: [
     {
+      id: "2020051201",
+      title: "ツイッタ",
+      description: "2020-05-12_01, animation"
+    },
+    {
       id: "2020051101",
       title: "Emacs",
       description: "2020-05-11_01, animation"

@@ -103,8 +103,6 @@ export default {
     this.prevButtonClass = 'tc-bottom-button' + (this.prev == null ? ' disabled' : '')
     this.nextButtonClass = 'tc-bottom-button' + (this.next == null ? ' disabled' : '')
 
-    document.title = this.page.title + ' - tksshj.com'
-
     setTimeout(() => {
       this.showText = true
       this.showFooter = true
