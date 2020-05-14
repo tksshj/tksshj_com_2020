@@ -3,10 +3,7 @@
     <div class="tc-scroller" :style="{ height: height + 'px' }"></div>
     <div id="tc-canvas-container" class="tc-canvas-container"></div>
 
-    <tc-page-content
-      title="これはブログです"
-      description="2020-04-15_01, scroll"
-    >
+    <tc-page-content>
       <p>
         これはブログとかそういうのです。
         あとWebGLとかp5.jsとかthree.jsとかをやりたいのでそういうのです。
@@ -25,9 +22,6 @@ import TcPageContent from '../components/tc_page_content.vue'
 export default {
   components: {
     'tc-page-content': TcPageContent
-  },
-  head: {
-    title: 'これはブログです - tksshj.com'
   },
   data() {
     return {

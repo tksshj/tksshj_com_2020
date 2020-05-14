@@ -1,6 +1,11 @@
 export default {
   pages: [
     {
+      id: "2020051501",
+      title: "WebGL",
+      description: "2020-05-15_01, animation"
+    },
+    {
       id: "2020051401",
       title: "YouTube",
       description: "2020-05-14_01, animation"
