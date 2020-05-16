@@ -3,7 +3,7 @@
 
 
     <header ref="tcHeader">
-      <a href="/"><h1 class="tc-site-title">tksshj.com</h1></a>
+      <h1 class="tc-site-title"><a href="/">tksshj.com</a></h1>
     </header>
 
 
@@ -18,7 +18,7 @@
     </main>
 
 
-    <footer ref="tcFooter" v-show="showFooter">
+    <footer ref="tcFooter">
 
       <p class="tc-underline" @click="toggleText" v-if="!playButton">
         {{ showText ? 'テキストを隠す' :  'テキストを表示する' }}
@@ -28,8 +28,6 @@
         <tc-button @click="playButtonClicked" v-if="!playing"><tc-icon>play_arrow</tc-icon>Play</tc-button>
         <tc-button @click="playButtonClicked" v-if="playing"><tc-icon>pause</tc-icon>Pause</tc-button>
       </p>
-
-
 
       <a :class="prevButtonClass" :href="prevPath">
         <i class="material-icons">keyboard_arrow_left</i><p>前へ</p>
@@ -65,7 +63,6 @@ export default {
       prevButtonClass: 'tc-bottom-button',
       nextButtonClass: 'tc-bottom-button',
       showText: false,
-      showFooter: false,
       playing: false
     }
   },
@@ -105,7 +102,6 @@ export default {
 
     setTimeout(() => {
       this.showText = true
-      this.showFooter = true
     }, 1000)
   }
 }
@@ -130,8 +126,9 @@ export default {
     z-index: 10;
 
     background-color: rgba(255, 255, 255, 0);
-    transition: background-color 0.4s;
     &.show {
+      transition: background-color 0.4s;
+      transition-delay: 0.8s;
       background-color: rgba(255, 255, 255, 0.9);
     }
   }
@@ -182,11 +179,15 @@ export default {
     justify-content: space-around;
     align-items: center;
 
+
     background-color: rgba(255, 255, 255, 0);
-    transition: background-color 0.4s;
     &.show {
+      transition: background-color 0.4s;
+      transition-delay: 0.8s;
       background-color: rgba(255, 255, 255, 0.9);
     }
+
+
     .tc-underline {
       text-decoration: underline;
     }
