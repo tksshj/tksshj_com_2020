@@ -7,6 +7,8 @@
     <tc-page-content :playButton="true">
       <p>
         モザイク、なるほどなあ。(<a href="https://qiita.com/edo_m18/items/d166653ac0dccbc607dc">参考</a>)
+      </p>
+      <p>
         なんか色々できそうな感じがしてきたかも・・・？
       </p>
     </tc-page-content>
