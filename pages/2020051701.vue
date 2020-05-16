@@ -6,8 +6,11 @@
 
     <tc-page-content :playButton="true">
       <p>
-        動画っていうかビデオっぽくなった？かも？
-        細かい調整は必要かもしれないですね。
+        もしかしたら一番好きな言葉かもしれないです。
+        宿るっていう状況は裏側になにかあるじゃないですか。
+      </p>
+      <p>
+        なんか説教っぽいな？
       </p>
     </tc-page-content>
 
@@ -90,7 +93,7 @@ export default {
 
         this.glContext.viewport(this.viewportRect.x, this.viewportRect.y, this.viewportRect.w, this.viewportRect.h)
 
-        this.glBackground.draw(this.texture, this.w / 5 + this.frameCount % 10)
+        this.glBackground.draw(this.texture, 100)
       }
       requestAnimationFrame(this.draw)
     }

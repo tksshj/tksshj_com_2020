@@ -79,10 +79,12 @@ export default {
 
         let title = 'tksshj.com'
         let url = 'https://tksshj.com/'
+        let ogType = 'article'
         if (params.route != '/') {
           let page = TcPages.pages.find(page => '/' + page.id == params.route)
           title = page.title + ' - tksshj.com'
           url = `https://tksshj.com/${page.id}/`
+          ogType = 'website'
         }
 
         let text = fs.readFileSync(params.path, 'utf-8')
@@ -91,6 +93,7 @@ export default {
         let head = dom.window.document.head
 
         let metaData = [
+          { property: 'og:type',  content: ogType },
           { property: 'og:image', content: 'https://tksshj.com/favicons/site-tile-310x310.png' },
           { property: 'og:url',   content: url },
           { property: 'og:title', content: title },
