@@ -1,6 +1,11 @@
 export default {
   pages: [
     {
+      id: "2020051601",
+      title: "グレイスケール",
+      description: "2020-05-16_01, animation"
+    },
+    {
       id: "2020051501",
       title: "WebGL",
       description: "2020-05-15_01, animation"

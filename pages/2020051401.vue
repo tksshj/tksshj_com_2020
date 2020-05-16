@@ -129,38 +129,22 @@ export default {
       let page = position.page
       let progress = position.progress
 
-
-      /* this.p5.clear() */
-      /* this.p5.noStroke() */
       this.p5.stroke(216)
-
-      /* this.p5.rotate(Math.PI * (page + progress) * 0.05) */
       for (let row = 0; row < this.nVerticalTiles; row++) {
         for (let col = 0; col < this.nHorizontalTiles; col++) {
           this.p5.push()
           this.p5.rectMode(this.p5.CENTER)
-          /* this.p5.translate(this.p5.windowWidth * -0.5, this.p5.windowHeight * -0.5) */
           this.translateTile(page, progress, row, col)
-          /* this.p5.rotate(Math.PI * (page + progress)) */
-
-          let w = this.tileWidth
-          /* if ((row + col) % 2 == 0) { */
-            w = this.tileWidth * (progress > 0.5 ? progress : (1.0 - progress))
-          /* } */
-
+          let w = this.tileWidth * (progress > 0.5 ? progress : (1.0 - progress))
           this.p5.fill(this.fillColor(page, row, col))
-          this.p5.square(0, //this.tileWidth * this.p5.random(0.95, 1.05),
-                         0, //this.tileWidth * this.p5.random(0.95, 1.05),
+          this.p5.square(0,
+                         0,
                          w,
                          w,
                          this.tileWidth * (page % 2 == 0 ? progress : 1.0 - progress))
-
-          /* this.tileWidth * progress) */
           this.p5.pop()
         }
       }
-
-      this.p5.square(30, 20, 55, 20, 15, 10, 5);
     },
     windowResized() {
       this.p5.resizeCanvas(this.p5.windowWidth, this.p5.windowHeight);

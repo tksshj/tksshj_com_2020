@@ -40,23 +40,12 @@ export default {
       this.$refs.tcCanvas.width = window.innerWidth
       this.$refs.tcCanvas.height = window.innerHeight
 
-      this.height = window.innerHeight * this.nPages
-
       this.glContext = this.$refs.tcCanvas.getContext('webgl') || this.$refs.tcCanvas.getContext('experimental-webgl')
 
       this.glBackground = new GlBackground(this.glContext)
       this.glBackground.setup()
 
       this.startDrawing()
-
-    },
-    position() {
-      let h = window.innerHeight
-      let y = window.window.scrollY
-      return {
-        page: Math.floor(y / h),
-        progress: (y % h) / h
-      }
     },
     startDrawing() {
       requestAnimationFrame(this.draw)
