@@ -6,8 +6,8 @@
 
     <tc-page-content :playButton="true">
       <p>
-        モザイクのサイズ？みたいなのを動かしてみました。
-        なんか小さくなったとき動画みたいな感じになるという発見がやばい気がする。
+        動画っていうかビデオっぽくなった？かも？
+        細かい調整は必要かもしれないですね。
       </p>
     </tc-page-content>
 
@@ -89,7 +89,7 @@ export default {
 
         this.glContext.viewport(this.viewportRect.x, this.viewportRect.y, this.viewportRect.w, this.viewportRect.h)
 
-        this.glBackground.draw(this.texture, this.frameCount)
+        this.glBackground.draw(this.texture, window.innerWidth / 10 + this.frameCount % 10)
       }
       requestAnimationFrame(this.draw)
     }
