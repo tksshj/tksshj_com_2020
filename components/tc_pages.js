@@ -1,14 +1,19 @@
 export default {
   pages: [
     {
+      id: "2020051602",
+      title: "モザイク",
+      description: "2020-05-16_02, image"
+    },
+    {
       id: "2020051601",
       title: "グレイスケール",
-      description: "2020-05-16_01, animation"
+      description: "2020-05-16_01, image"
     },
     {
       id: "2020051501",
       title: "WebGL",
-      description: "2020-05-15_01, animation"
+      description: "2020-05-15_01, image"
     },
     {
       id: "2020051401",
