@@ -6,11 +6,8 @@
 
     <tc-page-content :playButton="true">
       <p>
-        もしかしたら一番好きな言葉かもしれないです。
-        宿るっていう状況は裏側になにかあるじゃないですか。
-      </p>
-      <p>
-        なんか説教っぽいな？
+        WebGL?glsl?やっぱ難しいですね。慣れでなんとかなるやつだったらいいけど、どうなんだろう。。。
+        右上？が明るくなるようになっている？感じ？
       </p>
     </tc-page-content>
 
@@ -19,7 +16,7 @@
 
 <script>
 import TcPageContent from '../components/tc_page_content.vue'
-import GlBackground from '../components/2020051603/gl_background.js'
+import GlBackground from '../components/2020051801/gl_background.js'
 
 export default {
   components: {
@@ -93,7 +90,7 @@ export default {
 
         this.glContext.viewport(this.viewportRect.x, this.viewportRect.y, this.viewportRect.w, this.viewportRect.h)
 
-        this.glBackground.draw(this.texture, 100)
+        this.glBackground.draw(this.texture, 100, { width: window.innerWidth, height: window.innerHeight })
       }
       requestAnimationFrame(this.draw)
     }
