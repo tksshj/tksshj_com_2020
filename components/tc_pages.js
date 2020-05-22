@@ -1,6 +1,11 @@
 export default {
   pages: [
     {
+      id: "2020052301",
+      title: "空挺ドラゴンズ",
+      description: "2020-05-23_01, animation"
+    },
+    {
       id: "2020052201",
       title: "忙しい",
       description: "2020-05-22_01, animation"
