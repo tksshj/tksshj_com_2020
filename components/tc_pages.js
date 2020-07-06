@@ -1,6 +1,11 @@
 export default {
   pages: [
     {
+      id: "2020070701",
+      title: "ノーマルライフ",
+      description: "2020-07-07_01, animation, text"
+    },
+    {
       id: "2020062401",
       title: "スコープ",
       description: "2020-06-24_01, animation"
