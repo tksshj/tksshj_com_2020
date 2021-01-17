@@ -60,8 +60,8 @@ export default class GlBackground {
     this.gl.useProgram(this.program)
     this.attrPosition = this.gl.getAttribLocation(this.program, 'position')
     this.attrUv = this.gl.getAttribLocation(this.program, 'uv')
-    this.unifTexture = this.gl.getUniformLocation(this.program, 'texture');
-    this.unifSize = this.gl.getUniformLocation(this.program, 'size');
+    this.unifTexture = this.gl.getUniformLocation(this.program, 'texture')
+    this.unifSize = this.gl.getUniformLocation(this.program, 'size')
   }
 
 
