@@ -1,6 +1,11 @@
 export default {
   pages: [
     {
+      id: '2021011701',
+      title: 'おまえになれてもなあ、、、',
+      description: '2021-01-17_01, animation, text'
+    },
+    {
       id: '2020080501',
       title: '10年くらいの',
       description: '2020-08-05_01, animation, text'
