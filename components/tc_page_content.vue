@@ -18,7 +18,7 @@
     </main>
 
 
-    <footer ref="tcFooter">
+    <footer ref="tcFooter" v-if="showFooter">
 
       <p class="tc-underline" @click="toggleText" v-if="!playButton">
         {{ showText ? 'テキストを隠す' :  'テキストを表示する' }}
@@ -58,6 +58,7 @@ export default {
       page: TcPages.page(this.$route.name),
       prev: TcPages.prev(this.$route.name),
       next: TcPages.next(this.$route.name),
+      showFooter: this.$route.name != 'index',
       prevPath: null,
       nextPath: null,
       prevButtonClass: 'tc-bottom-button',
@@ -72,12 +73,16 @@ export default {
         this.$refs.tcPageContent.classList.add('show')
         this.$refs.tcHeader.classList.add('show')
         this.$refs.tcMain.classList.add('show')
-        this.$refs.tcFooter.classList.add('show')
+        if (this.showFooter) {
+          this.$refs.tcFooter.classList.add('show')
+        }
       } else {
         this.$refs.tcPageContent.classList.remove('show')
         this.$refs.tcHeader.classList.remove('show')
         this.$refs.tcMain.classList.remove('show')
-        this.$refs.tcFooter.classList.remove('show')
+        if (this.showFooter) {
+          this.$refs.tcFooter.classList.remove('show')
+        }
       }
     }
   },
