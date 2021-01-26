@@ -1,6 +1,11 @@
 export default {
   pages: [
     {
+      id: '2021012701',
+      title: 'Safari・インドの青鬼',
+      description: '2021-01-25_01, animation, text'
+    },
+    {
       id: '2021012501',
       title: 'まにあわない！',
       description: '2021-01-25_01, animation, text'
