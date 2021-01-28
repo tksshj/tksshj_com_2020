@@ -1,9 +1,14 @@
 export default {
   pages: [
     {
+      id: '2021012801',
+      title: 'ジントニック',
+      description: '2021-01-28_01, animation, text'
+    },
+    {
       id: '2021012701',
       title: 'Safari・インドの青鬼',
-      description: '2021-01-25_01, animation, text'
+      description: '2021-01-27_01, animation, text'
     },
     {
       id: '2021012501',
