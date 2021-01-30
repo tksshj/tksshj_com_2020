@@ -1,6 +1,11 @@
 export default {
   pages: [
     {
+      id: '2021013101',
+      title: "Dewar's, BEEFEATER, EARLY TIMES",
+      description: '2021-01-31_01, animation, text'
+    },
+    {
       id: '2021012801',
       title: 'ジントニック',
       description: '2021-01-28_01, animation, text'
