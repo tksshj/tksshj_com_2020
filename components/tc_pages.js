@@ -344,19 +344,14 @@ export default {
       id: '2020041501',
       title: 'これはブログです',
       description: '2020-04-15_01, scroll'
-    },
-    {
-      id: 'index',
-      title: '',
-      description: ''
-    },
+    }
   ],
   page(id) {
     return this.pages.find(page => page.id == id)
   },
   prev(id) {
     let current = this.pages.findIndex(page => page.id == id)
-    if (current < this.pages.length) {
+    if (0 <= current && current < this.pages.length) {
       return this.pages[current + 1]
     }
     return null
