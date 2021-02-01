@@ -1,8 +1,13 @@
 export default {
   pages: [
     {
+      id: '2021020201',
+      title: '同属嫌悪',
+      description: '2021-02-02_01, animation, text'
+    },
+    {
       id: '2021013102',
-      title: "みえている、やるべきこと",
+      title: 'みえている、やるべきこと',
       description: '2021-01-31_02, animation, text'
     },
     {
