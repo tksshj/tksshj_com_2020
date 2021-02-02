@@ -1,6 +1,7 @@
 <template>
   <div class="tc-page">
 
+
     <slot name="animation" />
 
 
@@ -12,11 +13,9 @@
 
       <div ref="tcMain" class="tc-main">
         <main>
-
           <template v-if="$route.name == 'index'">
             <slot name="main" />
           </template>
-
           <template v-if="$route.name != 'index'">
             <article>
               <h1 class="tc-title">{{ page.title }}</h1>
@@ -26,7 +25,6 @@
               </div>
             </article>
           </template>
-
         </main>
       </div>
 
@@ -43,6 +41,8 @@
       </footer>
 
     </div>
+
+
   </div>
 </template>
 
@@ -174,7 +174,7 @@ export default {
       }
 
       .tc-show-text {
-        width: 45%;
+        width: 50%;
         text-align: center;
         text-decoration: underline;
       }
