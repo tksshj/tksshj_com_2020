@@ -26,7 +26,7 @@
 
 <script>
 import TcPage from '../components/tc_page.vue'
-import TcAnimation from '../components/animations/2021011701.vue'
+import TcAnimation from '../components/animations/2020080501.vue'
 
 export default {
   components: {
