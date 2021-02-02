@@ -14,7 +14,7 @@
       <div ref="tcMain" class="tc-main">
         <main>
           <template v-if="$route.name == 'index'">
-            <slot name="main" />
+            <slot name="main"></slot>
           </template>
           <template v-if="$route.name != 'index'">
             <article>
