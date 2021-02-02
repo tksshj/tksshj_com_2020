@@ -24,13 +24,12 @@ export default {
       this.p5.windowResized = this.windowResized
     },
     setup() {
-      let width = window.innerWidth
-      let height = window.innerHeight
-      this.p5.createCanvas(width, height)
+      this.p5.createCanvas(window.innerWidth, window.innerHeight)
       this.p5.frameRate(20)
       this.reset()
     },
     reset() {
+      this.squares.splice(0)
       let w = Math.max(this.p5.width, this.p5.height) * 0.1
       for (let y = 0; y < (this.p5.height / w + 1); y++) {
         for (let x = 0; x < (this.p5.width / w + 1); x++) {

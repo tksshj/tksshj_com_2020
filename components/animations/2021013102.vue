@@ -31,6 +31,7 @@ export default {
       this.reset()
     },
     reset() {
+      this.squares.splice(0)
       let w = Math.max(this.p5.width, this.p5.height) * 0.1
       for (let y = 0; y < (this.p5.height / w + 1); y++) {
         for (let x = 0; x < (this.p5.width / w + 1); x++) {
