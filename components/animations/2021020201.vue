@@ -28,11 +28,13 @@ export default {
       let height = window.innerHeight
       this.p5.createCanvas(width, height)
       this.p5.frameRate(20)
-
-      let w = Math.max(width, height) * 0.1
-      for (let y = 0; y < (height / w + 1); y++) {
-        console.log(y)
-        for (let x = 0; x < (width / w + 1); x++) {
+      this.reset()
+    },
+    reset() {
+      this.squares.splice(0)
+      let w = Math.max(this.p5.width, this.p5.height) * 0.1
+      for (let y = 0; y < (this.p5.height / w + 1); y++) {
+        for (let x = 0; x < (this.p5.width / w + 1); x++) {
           this.squares.push({
             x: w * x,
             y: w * y,
@@ -75,8 +77,8 @@ export default {
       }
     },
     windowResized() {
-      console.log('resized')
-      this.p5.resizeCanvas(this.p5.windowWidth, this.p5.windowHeight);
+      this.p5.resizeCanvas(this.p5.windowWidth, this.p5.windowHeight)
+      this.reset()
     }
   },
   mounted() {
