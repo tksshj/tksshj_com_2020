@@ -14,9 +14,6 @@ export default {
     }
   },
   methods: {
-    setupPage() {
-      this.p5App = new P5(this.sketch, 'tc-animation')
-    },
     sketch(p5) {
       this.p5 = p5
       this.p5.setup = this.setup
@@ -24,9 +21,7 @@ export default {
       this.p5.windowResized = this.windowResized
     },
     setup() {
-      let width = window.innerWidth
-      let height = window.innerHeight
-      this.p5.createCanvas(width, height)
+      this.p5.createCanvas(window.innerWidth, window.innerHeight)
       this.p5.frameRate(20)
       this.reset()
     },
@@ -82,7 +77,7 @@ export default {
     }
   },
   mounted() {
-    this.setupPage()
+    this.p5App = new P5(this.sketch, 'tc-animation')
   },
   beforeDestroy() {
     this.p5.remove()

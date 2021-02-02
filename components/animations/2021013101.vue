@@ -14,9 +14,6 @@ export default {
     }
   },
   methods: {
-    setupPage() {
-      this.p5App = new P5(this.sketch, 'tc-animation')
-    },
     sketch(p5) {
       this.p5 = p5
       this.p5.setup = this.setup
@@ -69,7 +66,7 @@ export default {
     }
   },
   mounted() {
-    this.setupPage()
+    this.p5App = new P5(this.sketch, 'tc-animation')
   },
   beforeDestroy() {
     this.p5.remove()
