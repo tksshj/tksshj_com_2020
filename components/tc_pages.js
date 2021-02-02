@@ -1,6 +1,11 @@
 export default {
   pages: [
     {
+      id: '2021020301',
+      title: '東京',
+      description: '2021-02-03_01, animation, text'
+    },
+    {
       id: '2021020201',
       title: '同属嫌悪',
       description: '2021-02-02_01, animation, text'
@@ -237,7 +242,7 @@ export default {
     },
     {
       id: '2020042301',
-      title: 'シンセから！だからまだ遠いわ！',
+      title: 'シンセからだからまだ遠いわ！',
       description: '2020-04-23_01, scroll'
     },
     {
