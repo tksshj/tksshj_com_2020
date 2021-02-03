@@ -36,7 +36,7 @@ export default {
             w: w,
             color: 255 - this.p5.random(48),
             r: this.p5.random(360),
-            rs: 2 + this.p5.random(10),
+            rs: 4 + this.p5.random(6),
             direction: (this.p5.random(10) >= 5.0 ? 1 : -1)
           })
         }
@@ -50,13 +50,13 @@ export default {
         this.p5.push()
 
         let square = this.squares[i]
-        this.p5.strokeWeight(10)
-        this.p5.stroke(square.color)
+        this.p5.strokeWeight(0)
+        this.p5.fill(square.color)
 
         this.p5.translate(square.x, square.y)
-        this.p5.rotate(square.r / 180 * Math.PI)
-        this.p5.translate(-square.w * 0.05 * (i % 8), -square.w * 0.05 * (i % 8))
-        this.p5.rect(0, 0, square.w, square.w)
+        this.p5.rotate(square.r / 180 * Math.PI * 0.2)
+        this.p5.translate(-square.w * 0.05 * (i % 16), -square.w * 0.05 * (i % 8))
+        this.p5.rect(0, 0, square.w * 0.5, square.w * 4.0)
         square.r += square.rs * square.direction
 
         this.p5.pop()

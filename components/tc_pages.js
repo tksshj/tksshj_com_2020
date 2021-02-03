@@ -1,6 +1,11 @@
 export default {
   pages: [
     {
+      id: '2021020401',
+      title: '同族嫌悪',
+      description: '2021-02-04_01, animation, text'
+    },
+    {
       id: '2021020301',
       title: '東京',
       description: '2021-02-03_01, animation, text'
