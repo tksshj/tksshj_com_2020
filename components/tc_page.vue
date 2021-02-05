@@ -153,6 +153,9 @@ export default {
             p {
               padding: 0 0 16px;
             }
+            a {
+              text-decoration: underline;
+            }
           }
         }
       }

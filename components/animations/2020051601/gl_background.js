@@ -1,4 +1,4 @@
-import GlCommon from '../gl_common.js'
+import GlCommon from '../../gl_common.js'
 
 
 export default class GlBackground {
@@ -11,6 +11,7 @@ export default class GlBackground {
     this.attrUv = null
     this.positionBuffer = null
     this.uvBuffer = null
+    this.unifTexture = null
   }
 
 
@@ -33,10 +34,18 @@ export default class GlBackground {
     `
     let fragmentShaderSource = `
       precision mediump float;
+      uniform sampler2D texture;
       varying vec2 varyUv;
 
-      void main(void) {
-        gl_FragColor = vec4(1.0 - varyUv.x * 0.5, 1.0 - varyUv.x * 0.5, 1.0 - varyUv.x * 0.5, 1.0);
+      const float redScale   = 0.298912;
+      const float greenScale = 0.586611;
+      const float blueScale  = 0.114478;
+      const vec3  monochromeScale = vec3(redScale, greenScale, blueScale);
+
+      void main(void){
+        vec4 smpColor = texture2D(texture, varyUv);
+        float grayColor = dot(smpColor.rgb, monochromeScale);
+        gl_FragColor = vec4(vec3(grayColor), 1.0);
       }
     `
     this.program = GlCommon.setupProgram(this.gl, vertexShaderSource, fragmentShaderSource)
@@ -47,6 +56,7 @@ export default class GlBackground {
     this.gl.useProgram(this.program)
     this.attrPosition = this.gl.getAttribLocation(this.program, 'position')
     this.attrUv = this.gl.getAttribLocation(this.program, 'uv')
+    this.unifTexture = this.gl.getUniformLocation(this.program, 'texture');
   }
 
 
@@ -69,8 +79,7 @@ export default class GlBackground {
   }
 
 
-  draw() {
-    console.log('draw')
+  draw(texture) {
     this.gl.useProgram(this.program)
 
     this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.positionBuffer)
@@ -80,6 +89,9 @@ export default class GlBackground {
     this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.uvBuffer)
     this.gl.vertexAttribPointer(this.attrUv, 2, this.gl.FLOAT, false, 0, 0)
     this.gl.enableVertexAttribArray(this.attrUv)
+
+    this.gl.bindTexture(this.gl.TEXTURE_2D, texture)
+    this.gl.uniform1i(this.unifTexture, texture)
 
     this.gl.drawArrays(this.gl.TRIANGLE_STRIP, 0, 4)
 

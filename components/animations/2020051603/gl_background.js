@@ -1,4 +1,4 @@
-import GlCommon from '../gl_common.js'
+import GlCommon from '../../gl_common.js'
 
 
 export default class GlBackground {
@@ -13,7 +13,6 @@ export default class GlBackground {
     this.uvBuffer = null
     this.unifTexture = null
     this.unifSize = null
-    this.unifWindowSize = null
   }
 
 
@@ -38,7 +37,6 @@ export default class GlBackground {
       precision mediump float;
       uniform sampler2D texture;
       uniform float size;
-      uniform vec2 windowSize;
       varying vec2 varyUv;
 
 
@@ -48,17 +46,12 @@ export default class GlBackground {
       const vec3  monochromeScale = vec3(redScale, greenScale, blueScale);
 
       void main(void){
-        float x = gl_FragCoord.x / 2048.0;
-        float y = gl_FragCoord.y / 2048.0;
-        vec4 smpColor = texture2D(texture, varyUv);
-        float grayColor = dot(smpColor.rgb, monochromeScale) + x + y;
+        vec2 uv = floor(varyUv * size) / size;
+        vec4 smpColor = texture2D(texture, uv);
+        float grayColor = dot(smpColor.rgb, monochromeScale);
         gl_FragColor = vec4(vec3(grayColor), 1.0);
       }
     `
-
-    // vec2 uv = floor(varyUv * size) / size;
-
-
     this.program = GlCommon.setupProgram(this.gl, vertexShaderSource, fragmentShaderSource)
     if (!this.program) {
       console.log('Faild to setup shaders')
@@ -67,9 +60,8 @@ export default class GlBackground {
     this.gl.useProgram(this.program)
     this.attrPosition = this.gl.getAttribLocation(this.program, 'position')
     this.attrUv = this.gl.getAttribLocation(this.program, 'uv')
-    this.unifTexture = this.gl.getUniformLocation(this.program, 'texture');
-    this.unifSize = this.gl.getUniformLocation(this.program, 'size');
-    this.unifWindowSize = this.gl.getUniformLocation(this.program, 'windowSize');
+    this.unifTexture = this.gl.getUniformLocation(this.program, 'texture')
+    this.unifSize = this.gl.getUniformLocation(this.program, 'size')
   }
 
 
@@ -92,7 +84,7 @@ export default class GlBackground {
   }
 
 
-  draw(texture, size, windowSize) {
+  draw(texture, size) {
     this.gl.useProgram(this.program)
 
     this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.positionBuffer)
@@ -107,7 +99,6 @@ export default class GlBackground {
     this.gl.uniform1i(this.unifTexture, texture)
 
     this.gl.uniform1f(this.unifSize, size)
-    this.gl.uniform2f(this.unifWindowSize, windowSize.width, windowSize.height)
 
     this.gl.drawArrays(this.gl.TRIANGLE_STRIP, 0, 4)
 

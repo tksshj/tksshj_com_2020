@@ -1,4 +1,4 @@
-import GlCommon from '../gl_common.js'
+import GlCommon from '../../gl_common.js'
 
 
 export default class GlBackground {
@@ -43,7 +43,8 @@ export default class GlBackground {
       const vec3  monochromeScale = vec3(redScale, greenScale, blueScale);
 
       void main(void){
-        vec4 smpColor = texture2D(texture, varyUv);
+        vec2 uv = floor(varyUv * 64.0) / 64.0;
+        vec4 smpColor = texture2D(texture, uv);
         float grayColor = dot(smpColor.rgb, monochromeScale);
         gl_FragColor = vec4(vec3(grayColor), 1.0);
       }
