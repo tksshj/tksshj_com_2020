@@ -5,6 +5,7 @@ import TcPages from './components/tc_pages.js'
 
 export default {
   ssr: false,
+  target: 'static',
   css: [
     '~/assets/application.scss'
   ],
@@ -38,7 +39,7 @@ export default {
          * console.log(params) */
 
         if (!params.route.startsWith('/202') && params.route != '/') {
-          return;
+          return
         }
 
         let title = 'tksshj.com'
