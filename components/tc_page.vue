@@ -14,14 +14,14 @@
       <div ref="tcMain" class="tc-main">
         <main>
           <template v-if="$route.name == 'index'">
-            <slot name="main"></slot>
+            <slot name="main" />
           </template>
           <template v-if="$route.name != 'index'">
             <article>
               <h1 class="tc-title">{{ page.title }}</h1>
               <p class="tc-description">{{ page.description }}</p>
               <div class="tc-article-content">
-                <slot name="main"></slot>
+                <slot name="main" />
               </div>
             </article>
           </template>
@@ -29,9 +29,16 @@
       </div>
 
       <footer ref="tcFooter">
-        <p class="tc-show-text" @click="showText = !showText">
+
+        <div class="tc-play-button" v-if="playButton">
+          <tc-button @click="playButtonClicked" v-if="!playing"><tc-icon>play_arrow</tc-icon>Play</tc-button>
+          <tc-button @click="playButtonClicked" v-if="playing"><tc-icon>pause</tc-icon>Pause</tc-button>
+        </div>
+
+        <p class="tc-show-text-button" @click="showText = !showText" v-if="!playButton">
           {{ showText ? 'テキストを隠す' :  'テキストを表示する' }}
         </p>
+
         <a :href="prevPath" :class="prevButtonClass">
           <i class="material-icons">keyboard_arrow_left</i><p>前へ</p>
         </a>
@@ -51,10 +58,12 @@ import TcPages from './tc_pages.js'
 
 export default {
   props: {
-    footer: Boolean
+    footer: Boolean,
+    playButton: Boolean
   },
   data() {
     return {
+      playing: false,
       showText: false,
       page: TcPages.page(this.$route.name),
       prev: TcPages.prev(this.$route.name),
@@ -65,10 +74,10 @@ export default {
   },
   computed: {
     prevButtonClass() {
-      return 'tc-button' + (this.prev != null ? '' : ' disabled')
+      return 'tc-nav-button' + (this.prev != null ? '' : ' disabled')
     },
     nextButtonClass() {
-      return 'tc-button' + (this.next != null ? '' : ' disabled')
+      return 'tc-nav-button' + (this.next != null ? '' : ' disabled')
     }
   },
   watch: {
@@ -82,8 +91,10 @@ export default {
     }
   },
   methods: {
-    hide() {
-      this.$refs.tcPageContent.classList.remove('show')
+    playButtonClicked() {
+      this.playing = !this.playing
+      this.showText = !this.showText
+      this.$emit('play-button-clicked', this.playing)
     }
   },
   mounted() {
@@ -176,17 +187,22 @@ export default {
         opacity: 1.0;
       }
 
-      .tc-show-text {
+      .tc-play-button {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .tc-show-text-button {
         width: 50%;
         text-align: center;
         text-decoration: underline;
       }
-      .tc-button {
+      .tc-nav-button {
         width: 20%;
         display: flex;
         justify-content: center;
         align-items: center;
-
         &.disabled {
           opacity: 0.3;
         }

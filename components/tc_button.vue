@@ -27,5 +27,8 @@ button {
     font-size: 32px;
     padding: 0 4px 0 0;
   }
+  a {
+    text-decoration: none;
+  }
 }
 </style>
