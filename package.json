@@ -9,6 +9,7 @@
     "@tweenjs/tween.js": "^18.5.0",
     "nuxt": "^2.12.2",
     "p5": "^1.0.0",
+    "three": "^0.125.2",
     "tone": "^13.8.25"
   },
   "devDependencies": {

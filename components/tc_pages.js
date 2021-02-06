@@ -1,109 +1,114 @@
 export default {
   pages: [
     {
+      id: '2021020701',
+      title: 'Three.js',
+      description: '2021-02-07_01'
+    },
+    {
       id: '2021020401',
       title: '同族嫌悪',
-      description: '2021-02-04_01, animation, text'
+      description: '2021-02-04_01'
     },
     {
       id: '2021020301',
       title: '東京',
-      description: '2021-02-03_01, animation, text'
+      description: '2021-02-03_01'
     },
     {
       id: '2021020201',
       title: '同属嫌悪',
-      description: '2021-02-02_01, animation, text'
+      description: '2021-02-02_01'
     },
     {
       id: '2021013102',
       title: 'みえている、やるべきこと',
-      description: '2021-01-31_02, animation, text'
+      description: '2021-01-31_02'
     },
     {
       id: '2021013101',
       title: "Dewar's, BEEFEATER, EARLY TIMES",
-      description: '2021-01-31_01, animation, text'
+      description: '2021-01-31_01'
     },
     {
       id: '2021012801',
       title: 'ジントニック',
-      description: '2021-01-28_01, animation, text'
+      description: '2021-01-28_01'
     },
     {
       id: '2021012701',
       title: 'Safari・インドの青鬼',
-      description: '2021-01-27_01, animation, text'
+      description: '2021-01-27_01'
     },
     {
       id: '2021012501',
       title: 'まにあわない！',
-      description: '2021-01-25_01, animation, text'
+      description: '2021-01-25_01'
     },
     {
       id: '2021011701',
       title: 'おまえになれてもなあ、、、',
-      description: '2021-01-17_01, animation, text'
+      description: '2021-01-17_01'
     },
     {
       id: '2020080501',
       title: '10年くらいの',
-      description: '2020-08-05_01, animation, text'
+      description: '2020-08-05_01'
     },
     {
       id: '2020080201',
       title: 'Emacs',
-      description: '2020-08-02_01, animation, text'
+      description: '2020-08-02_01'
     },
     {
       id: '2020070701',
       title: 'ノーマルライフ',
-      description: '2020-07-07_01, animation, text'
+      description: '2020-07-07_01'
     },
     {
       id: '2020062401',
       title: 'スコープ',
-      description: '2020-06-24_01, animation'
+      description: '2020-06-24_01'
     },
     {
       id: '2020060901',
       title: '老い',
-      description: '2020-06-09_01, animation'
+      description: '2020-06-09_01'
     },
     {
       id: '2020053001',
       title: '螺旋',
-      description: '2020-05-30_01, animation'
+      description: '2020-05-30_01'
     },
     {
       id: '2020052701',
       title: '肉が足りてない',
-      description: '2020-05-27_01, animation'
+      description: '2020-05-27_01'
     },
     {
       id: '2020052301',
       title: '空挺ドラゴンズ',
-      description: '2020-05-23_01, animation'
+      description: '2020-05-23_01'
     },
     {
       id: '2020052201',
       title: '忙しい',
-      description: '2020-05-22_01, animation'
+      description: '2020-05-22_01'
     },
     {
       id: '2020051801',
       title: 'WebGL難しい、、、',
-      description: '2020-05-18_01, animation'
+      description: '2020-05-18_01'
     },
     {
       id: '2020051604',
       title: 'モザイクの？モザイクの？？',
-      description: '2020-05-16_04, animation'
+      description: '2020-05-16_04'
     },
     {
       id: '2020051603',
       title: 'モザイクの？',
-      description: '2020-05-16_03, animation'
+      description: '2020-05-16_03'
     },
     {
       id: '2020051602',
@@ -123,42 +128,42 @@ export default {
     {
       id: '2020051401',
       title: 'YouTube',
-      description: '2020-05-14_01, animation'
+      description: '2020-05-14_01'
     },
     {
       id: '2020051201',
       title: 'ツイッタ',
-      description: '2020-05-12_01, animation'
+      description: '2020-05-12_01'
     },
     {
       id: '2020051101',
       title: 'Emacs',
-      description: '2020-05-11_01, animation'
+      description: '2020-05-11_01'
     },
     {
       id: '2020051001',
       title: 'やすみ',
-      description: '2020-05-10_01, animation'
+      description: '2020-05-10_01'
     },
     {
       id: '2020050901',
       title: 'アーリータイムズ',
-      description: '2020-05-09_01, animation'
+      description: '2020-05-09_01'
     },
     {
       id: '2020050801',
       title: 'やる気のタネ',
-      description: '2020-05-08_01, animation'
+      description: '2020-05-08_01'
     },
     {
       id: '2020050601',
       title: '80 BPM',
-      description: '2020-05-06_01, animation, sound'
+      description: '2020-05-06_01, sound'
     },
     {
       id: '2020050502',
       title: '待望のPlayボタン',
-      description: '2020-05-05_02, animation'
+      description: '2020-05-05_02'
     },
     {
       id: '2020050501',
@@ -178,32 +183,32 @@ export default {
     {
       id: '2020050201',
       title: '8小節ベロベロ',
-      description: '2020-05-02_01, animation, sound'
+      description: '2020-05-02_01, sound'
     },
     {
       id: '2020050102',
       title: '1小節',
-      description: '2020-05-01_02, animation, sound'
+      description: '2020-05-01_02, sound'
     },
     {
       id: '2020050101',
       title: 'KORG Gadget',
-      description: '2020-05-01_01, animation'
+      description: '2020-05-01_01'
     },
     {
       id: '2020043001',
       title: 'Magic Keyboard',
-      description: '2020-04-30_01, animation'
+      description: '2020-04-30_01'
     },
     {
       id: '2020042801',
       title: 'シンセわからんすぎるな？',
-      description: '2020-04-28_01, animation'
+      description: '2020-04-28_01'
     },
     {
       id: '2020042703',
       title: '意外とやらない',
-      description: '2020-04-27_03, animation, text'
+      description: '2020-04-27_03'
     },
     {
       id: '2020042702',
@@ -213,37 +218,37 @@ export default {
     {
       id: '2020042701',
       title: 'なんかやる',
-      description: '2020-04-27_01, animation, text'
+      description: '2020-04-27_01'
     },
     {
       id: '2020042601',
       title: '次へ！やっぱ前へ！',
-      description: '2020-04-26_01, animation'
+      description: '2020-04-26_01'
     },
     {
       id: '2020042502',
       title: '力が欲しいか',
-      description: '2020-04-25_02, animation, text'
+      description: '2020-04-25_02'
     },
     {
       id: '2020042501',
       title: 'スピーカーほしいけど',
-      description: '2020-04-25_01, animation'
+      description: '2020-04-25_01'
     },
     {
       id: '2020042304',
       title: 'あれ・・・？',
-      description: '2020-04-23_04, animation'
+      description: '2020-04-23_04'
     },
     {
       id: '2020042303',
       title: 'ドラムキットじゃんもうこれ！！！',
-      description: '2020-04-23_03, animation'
+      description: '2020-04-23_03'
     },
     {
       id: '2020042302',
       title: 'のり弁',
-      description: '2020-04-23_02, animation'
+      description: '2020-04-23_02'
     },
     {
       id: '2020042301',
@@ -253,7 +258,7 @@ export default {
     {
       id: '2020042201',
       title: 'チャット',
-      description: '2020-04-22_01, animation, text'
+      description: '2020-04-22_01'
     },
     {
       id: '2020042102',
@@ -263,17 +268,17 @@ export default {
     {
       id: '2020042101',
       title: 'ノイズ？ハイハット？',
-      description: '2020-04-21_01, animation'
+      description: '2020-04-21_01'
     },
     {
       id: '2020042004',
       title: 'おと！',
-      description: '2020-04-20_04, animation'
+      description: '2020-04-20_04'
     },
     {
       id: '2020042003',
       title: 'やっすいワイン、音楽つけたい',
-      description: '2020-04-20_03, animation'
+      description: '2020-04-20_03'
     },
     {
       id: '2020042002',
@@ -288,17 +293,17 @@ export default {
     {
       id: '2020041903',
       title: 'スクロール失敗',
-      description: '2020-04-19_03, animation'
+      description: '2020-04-19_03'
     },
     {
       id: '2020041902',
       title: 'サバ缶うんめぇ',
-      description: '2020-04-19_02, animation'
+      description: '2020-04-19_02'
     },
     {
       id: '2020041901',
       title: 'ハンドソープ、LOHACO',
-      description: '2020-04-19_01, animation'
+      description: '2020-04-19_01'
     },
     {
       id: '2020041801',
@@ -308,12 +313,12 @@ export default {
     {
       id: '2020041703',
       title: 'キリン一番搾り',
-      description: '2020-04-17_03, animation'
+      description: '2020-04-17_03'
     },
     {
       id: '2020041702',
       title: '郵便局がなくなってる・・・！？',
-      description: '2020-04-17_02, animation'
+      description: '2020-04-17_02'
     },
     {
       id: '2020041701',
@@ -323,7 +328,7 @@ export default {
     {
       id: '2020041604',
       title: 'JIM BEAMとコーラ',
-      description: '2020-04-16_04, animation'
+      description: '2020-04-16_04'
     },
     {
       id: '2020041603',
@@ -333,7 +338,7 @@ export default {
     {
       id: '2020041602',
       title: 'スクエアもするし自動運転もする',
-      description: '2020-04-16_02, animation'
+      description: '2020-04-16_02'
     },
     {
       id: '2020041601',
@@ -343,7 +348,7 @@ export default {
     {
       id: '2020041503',
       title: '醤油野菜炒め弁当',
-      description: '2020-04-15_03, animation'
+      description: '2020-04-15_03'
     },
     {
       id: '2020041502',
