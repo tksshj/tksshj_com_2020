@@ -5,9 +5,13 @@
     </template>
     <template slot="main">
       <p>
-        WebGL、<a href="https://wgld.org/d/webgl/w053.html">こちらを参考に</a>写真を白黒で表示してみたんですが、
-        そもそもいい写真なんて持ってないですね。
-        そしてWebGLやっぱ時間かかるし難しいので、p5.jsで簡単に遊んでるほうがテンション維持しやすいかも。
+        WebGL、<a href="https://wgld.org/d/webgl/w053.html">このページを参考に</a>写真を白黒で表示してみた。
+      </p>
+      <p>
+        WebGLやっぱ時間かかるし難しいので、p5.jsで簡単に遊んでるほうがテンション維持しやすいかも。
+      </p>
+      <p>
+        あといい写真なんて持ってないわ。
       </p>
     </template>
   </tc-page>

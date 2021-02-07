@@ -5,7 +5,7 @@
     </template>
     <template slot="main">
       <p>
-        Clubhouse無理でした
+        Clubhouse無理でした。
       </p>
     </template>
   </tc-page>

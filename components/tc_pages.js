@@ -2,38 +2,38 @@ export default {
   pages: [
     {
       id: '2021020701',
-      title: 'Three.js',
-      description: '2021-02-07_01'
+      title: '文章',
+      description: '2021-02-07_01, Three.js'
     },
     {
       id: '2021020401',
       title: '同族嫌悪',
-      description: '2021-02-04_01'
+      description: '2021-02-04_01, p5.js'
     },
     {
       id: '2021020301',
       title: '東京',
-      description: '2021-02-03_01'
+      description: '2021-02-03_01, p5.js'
     },
     {
       id: '2021020201',
       title: '同属嫌悪',
-      description: '2021-02-02_01'
+      description: '2021-02-02_01, p5.js'
     },
     {
       id: '2021013102',
-      title: 'みえている、やるべきこと',
-      description: '2021-01-31_02'
+      title: 'やるべきこと',
+      description: '2021-01-31_02, p5.js'
     },
     {
       id: '2021013101',
       title: "Dewar's, BEEFEATER, EARLY TIMES",
-      description: '2021-01-31_01'
+      description: '2021-01-31_01, p5.js'
     },
     {
       id: '2021012801',
       title: 'ジントニック',
-      description: '2021-01-28_01'
+      description: '2021-01-28_01, p5.js'
     },
     {
       id: '2021012701',
@@ -162,7 +162,7 @@ export default {
     },
     {
       id: '2020050502',
-      title: '待望のPlayボタン',
+      title: 'Playボタン',
       description: '2020-05-05_02'
     },
     {
@@ -252,7 +252,7 @@ export default {
     },
     {
       id: '2020042301',
-      title: 'シンセからだからまだ遠いわ！',
+      title: 'シンセからかも',
       description: '2020-04-23_01, scroll'
     },
     {
