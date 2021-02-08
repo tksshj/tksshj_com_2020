@@ -2,7 +2,10 @@
   <tc-page>
 
     <template slot="animation">
-      <tc-animation />
+      <tc-animation-0 v-if="animation == 0" />
+      <tc-animation-1 v-if="animation == 1" />
+      <tc-animation-2 v-if="animation == 2" />
+      <tc-animation-3 v-if="animation == 3" />
     </template>
 
     <template slot="main">
@@ -22,16 +25,23 @@
 <script>
 import TcPages from '../components/tc_pages.js'
 import TcPage from '../components/tc_page.vue'
-import TcAnimation from '../components/animations/2020050502.vue'
+import TcAnimation0 from '../components/animations/2020050502.vue'
+import TcAnimation1 from '../components/animations/2021020301.vue'
+import TcAnimation2 from '../components/animations/2020080501.vue'
+import TcAnimation3 from '../components/animations/2020051201.vue'
 
 export default {
   components: {
     'tc-page': TcPage,
-    'tc-animation': TcAnimation
+    'tc-animation-0': TcAnimation0,
+    'tc-animation-1': TcAnimation1,
+    'tc-animation-2': TcAnimation2,
+    'tc-animation-3': TcAnimation3
   },
   data() {
     return {
-      pages: TcPages.pages
+      pages: TcPages.pages,
+      animation: parseInt((Math.random() * 1000)) % 4
     }
   }
 }
