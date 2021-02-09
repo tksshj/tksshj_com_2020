@@ -1,5 +1,5 @@
 <template>
-  <div id="tc-animation" class="tc-animation">
+  <div ref="tcAnimation" id="tc-animation" class="tc-animation">
     <canvas ref="tcCanvas" />
   </div>
 </template>
@@ -20,8 +20,10 @@ export default {
   },
   methods: {
     setupPage() {
-      this.$refs.tcCanvas.width = window.innerWidth
-      this.$refs.tcCanvas.height = window.innerHeight
+      let cw = this.$refs.tcAnimation.clientWidth
+      let ch = this.$refs.tcAnimation.clientHeight
+      this.$refs.tcCanvas.width = cw
+      this.$refs.tcCanvas.height = ch
 
       this.glContext = this.$refs.tcCanvas.getContext('webgl') || this.$refs.tcCanvas.getContext('experimental-webgl')
 
@@ -50,9 +52,9 @@ export default {
       }
       image.src = '/2020051601.jpg'
 
-      this.w = Math.max(window.innerWidth, window.innerHeight)
-      this.viewportRect = { x: (window.innerWidth - this.w) * 0.5,
-                            y: (window.innerHeight - this.w) * 0.5,
+      this.w = Math.max(cw, ch)
+      this.viewportRect = { x: (cw - this.w) * 0.5,
+                            y: (ch - this.w) * 0.5,
                             w: this.w,
                             h: this.w }
 
@@ -76,7 +78,9 @@ export default {
 
         this.glContext.viewport(this.viewportRect.x, this.viewportRect.y, this.viewportRect.w, this.viewportRect.h)
 
-        this.glBackground.draw(this.texture, 100, { width: window.innerWidth, height: window.innerHeight })
+        this.glBackground.draw(this.texture,
+                               100,
+                               { width: this.$refs.tcAnimation.clientWidth, height: this.$refs.tcAnimation.clientHeight })
       }
       requestAnimationFrame(this.draw)
     }
@@ -92,9 +96,6 @@ export default {
 
 <style scoped lang="scss">
 .tc-animation {
-  position: fixed;
-  left: 0;
-  top: 0;
   width: 100%;
   height: 100%;
 }

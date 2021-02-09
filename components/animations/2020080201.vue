@@ -1,5 +1,5 @@
 <template>
-  <div id="tc-animation" class="tc-animation"></div>
+  <div ref="tcAnimation" id="tc-animation" class="tc-animation"></div>
 </template>
 
 <script>
@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     setupPage() {
-      this.height = window.innerHeight * this.nPages
+      this.height = this.$refs.tcAnimation.clientHeight * this.nPages
       this.p5App = new P5(this.sketch, 'tc-animation')
       this.setTween(0, true)
     },
@@ -47,7 +47,7 @@ export default {
                             .start()
     },
     position() {
-      let h = window.innerHeight
+      let h = this.$refs.tcAnimation.clientHeight
       let y = this.y
       return {
         page: Math.floor(y / h),
@@ -61,7 +61,7 @@ export default {
       this.p5.windowResized = this.windowResized
     },
     setup() {
-      this.p5.createCanvas(window.innerWidth, window.innerHeight, this.p5.WEBGL)
+      this.p5.createCanvas(this.$refs.tcAnimation.clientWidth, this.$refs.tcAnimation.clientHeight, this.p5.WEBGL)
       this.p5.frameRate(10)
       this.reset()
     },
@@ -122,7 +122,7 @@ export default {
       }
     },
     windowResized() {
-      this.p5.resizeCanvas(this.p5.windowWidth, this.p5.windowHeight)
+      this.p5.resizeCanvas(this.$refs.tcAnimation.clientWidth, this.$refs.tcAnimation.clientHeight)
       this.reset()
     }
   },
@@ -137,9 +137,6 @@ export default {
 
 <style scoped lang="scss">
 .tc-animation {
-  position: fixed;
-  left: 0;
-  top: 0;
   width: 100%;
   height: 100%;
 }

@@ -19,11 +19,13 @@ export default {
   },
   methods: {
     initScene() {
+      let w = this.$refs.tcAnimation.clientWidth
+      let h = this.$refs.tcAnimation.clientHeight
       this.scene = new THREE.Scene()
-      this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000)
+      this.camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 1000)
       this.renderer = new THREE.WebGLRenderer()
       this.renderer.setClearColor(new THREE.Color(0xCCCCCC))
-      this.renderer.setSize(window.innerWidth, window.innerHeight)
+      this.renderer.setSize(w, h)
 
       let sphereGeometry = new THREE.SphereGeometry(20, 20, 20)
       let sphereMaterial = new THREE.MeshBasicMaterial({
@@ -71,9 +73,6 @@ export default {
 
 <style scoped lang="scss">
 .tc-animation {
-  position: fixed;
-  left: 0;
-  top: 0;
   width: 100%;
   height: 100%;
 }

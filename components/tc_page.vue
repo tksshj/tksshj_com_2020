@@ -1,11 +1,11 @@
 <template>
   <div class="tc-page">
 
+    <div class="tc-background">
+      <slot name="animation" />
+    </div>
 
-    <slot name="animation" />
-
-
-    <div class="tc-page-content">
+    <div class="tc-content">
 
       <header>
         <h1><a href="/">tksshj.com</a></h1>
@@ -34,21 +34,27 @@
           <tc-button @click="playButtonClicked" v-if="!playing"><tc-icon>play_arrow</tc-icon>Play</tc-button>
           <tc-button @click="playButtonClicked" v-if="playing"><tc-icon>pause</tc-icon>Pause</tc-button>
         </div>
-
         <p class="tc-show-text-button" @click="showText = !showText" v-if="!playButton">
           {{ showText ? 'テキストを隠す' :  'テキストを表示する' }}
         </p>
 
-        <a :href="prevPath" :class="prevButtonClass">
-          <i class="material-icons">keyboard_arrow_left</i><p>前へ</p>
-        </a>
-        <a :href="nextPath" :class="nextButtonClass">
-          <p>次へ</p><i class="material-icons">keyboard_arrow_right</i>
-        </a>
+        <template v-if="$route.name == 'index'">
+          <p class="tc-update-animation-button" @click="$emit('update-animation')">
+            アニメーション変更
+          </p>
+        </template>
+        <template v-if="$route.name != 'index'">
+          <a :href="prevPath" :class="prevButtonClass">
+            <i class="material-icons">keyboard_arrow_left</i><p>前へ</p>
+          </a>
+          <a :href="nextPath" :class="nextButtonClass">
+            <p>次へ</p><i class="material-icons">keyboard_arrow_right</i>
+          </a>
+        </template>
+
       </footer>
 
     </div>
-
 
   </div>
 </template>
@@ -112,7 +118,15 @@ export default {
   width: 100%;
   height: 100%;
 
-  .tc-page-content {
+  .tc-background {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .tc-content {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -196,6 +210,10 @@ export default {
       .tc-show-text-button {
         width: 50%;
         text-align: center;
+        text-decoration: underline;
+      }
+      .tc-update-animation-button {
+        width: 50%;
         text-decoration: underline;
       }
       .tc-nav-button {

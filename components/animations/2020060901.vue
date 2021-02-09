@@ -1,5 +1,5 @@
 <template>
-  <div id="tc-animation" class="tc-animation" />
+  <div ref="tcAnimation" id="tc-animation" class="tc-animation" />
 </template>
 
 <script>
@@ -21,7 +21,7 @@ export default {
       this.p5.windowResized = this.windowResized
     },
     setup() {
-      this.p5.createCanvas(window.innerWidth, window.innerHeight)
+      this.p5.createCanvas(this.$refs.tcAnimation.clientWidth, this.$refs.tcAnimation.clientHeight)
       this.reset()
     },
     reset() {
@@ -79,7 +79,7 @@ export default {
       }
     },
     windowResized() {
-      this.p5.resizeCanvas(this.p5.windowWidth, this.p5.windowHeight)
+      this.p5.resizeCanvas(this.$refs.tcAnimation.clientWidth, this.$refs.tcAnimation.clientHeight)
       this.reset()
     }
   },
@@ -94,9 +94,6 @@ export default {
 
 <style scoped lang="scss">
 .tc-animation {
-  position: fixed;
-  left: 0;
-  top: 0;
   width: 100%;
   height: 100%;
 }

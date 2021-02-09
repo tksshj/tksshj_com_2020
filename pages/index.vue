@@ -1,5 +1,5 @@
 <template>
-  <tc-page>
+  <tc-page @update-animation="updateAnimation">
 
     <template slot="animation">
       <tc-animation-0 v-if="animation == 0" />
@@ -42,6 +42,11 @@ export default {
     return {
       pages: TcPages.pages,
       animation: parseInt((Math.random() * 1000)) % 4
+    }
+  },
+  methods: {
+    updateAnimation() {
+      this.animation = (this.animation + 1) % 4
     }
   }
 }

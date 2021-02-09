@@ -7,11 +7,13 @@ import * as THREE from 'three'
 
 export default {
   mounted() {
+    let w = this.$refs.tcAnimation.clientWidth
+    let h = this.$refs.tcAnimation.clientHeight
     let scene = new THREE.Scene()
-    let camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000)
+    let camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 1000)
     let renderer = new THREE.WebGLRenderer()
     renderer.setClearColor(new THREE.Color(0xF0F0F0))
-    renderer.setSize(window.innerWidth, window.innerHeight)
+    renderer.setSize(w, h)
 
     /* var axes = new THREE.AxesHelper(10)
      * scene.add(axes) */
@@ -62,9 +64,6 @@ export default {
 
 <style scoped lang="scss">
 .tc-animation {
-  position: fixed;
-  left: 0;
-  top: 0;
   width: 100%;
   height: 100%;
 }
