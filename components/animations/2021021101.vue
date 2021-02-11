@@ -19,48 +19,54 @@ export default {
   },
   methods: {
     initScene() {
+      console.log('initScene')
+
       let w = this.$refs.tcAnimation.clientWidth
       let h = this.$refs.tcAnimation.clientHeight
+
+      let nX = 5
+      let nY = 5 / w * h
+      if (w < h) {
+        nX = 5 / h * w
+        nY = 5
+      }
+      let fov = 60
+      let cameraZ = nY / Math.tan(30 * Math.PI / 180.0)
+
       this.scene = new THREE.Scene()
-      this.camera = new THREE.PerspectiveCamera(60, w / h, 0.1, 100)
+      this.camera = new THREE.PerspectiveCamera(fov, w / h, 1, 100)
       this.renderer = new THREE.WebGLRenderer()
       this.renderer.setClearColor(new THREE.Color(0xCCCCCC))
       this.renderer.setSize(w, h)
 
-      /* var axes = new THREE.AxesHelper(20)
+      this.scene.fog = new THREE.Fog(0xffffFF, 8, 0.0001)
+
+      /* var axes = new THREE.AxesHelper(10)
        * this.scene.add(axes) */
 
-      var cubeGeometry = new THREE.BoxGeometry(2, 2, 2)
+      var cubeGeometry = new THREE.BoxGeometry(1, 1, 1)
       var cubeMaterial = new THREE.MeshLambertMaterial({
         color: 0xffffff
       })
 
-      let nX = Math.ceil(3 / Math.cos(60 * Math.PI / 180.0))
-      for (let y = -nX; y < nX; y++) {
+      for (let y = -nY; y < nY; y++) {
         for (let x = -nX; x < nX; x++) {
           var cube = new THREE.Mesh(cubeGeometry, cubeMaterial)
-          cube.position.x = x * 2 + 1
-          cube.position.y = y * 2 + 1
+          cube.position.x = x + 0.5
+          cube.position.y = y + 0.5
+          cube.position.z = 0 - 0.5
           this.scene.add(cube)
-          this.cubes.push({x: x, y: y, cube: cube})
+          this.cubes.push({x: 0, y: 0, cube: cube})
         }
       }
-
-      /* var spotLight = new THREE.SpotLight(0xffffff)
-       * spotLight.position.set(0, 10, -20)
-       * this.scene.add(spotLight) */
-
-      var spotLight2 = new THREE.SpotLight(0xffffff)
-      spotLight2.position.set(-10, -10, 100)
-      this.scene.add(spotLight2)
 
       var directionalLight = new THREE.DirectionalLight(0xffffff)
       directionalLight.position.set(0, 3, 10)
       this.scene.add(directionalLight)
 
       this.camera.position.x = 0
-      this.camera.position.y = 3
-      this.camera.position.z = 10
+      this.camera.position.y = 0
+      this.camera.position.z = cameraZ
       this.camera.lookAt({x: 0, y: 0, z: 0})
 
       this.$refs.tcAnimation.appendChild(this.renderer.domElement);
@@ -69,14 +75,13 @@ export default {
     },
     renderScene() {
       this.nFrame++
-      this.mode = this.nFrame % 240 > 120 ? 0 : 1
+      this.mode = this.nFrame % 240 < 120 ? 0 : 1
 
       for (let i = 0; i < this.cubes.length; i++) {
-        this.cubes[i].cube.rotation.y += 0.00025 * i * (this.mode == 0 ? -1 : 1)
-        this.cubes[i].cube.rotation.x += 0.00025 * i * (this.mode == 0 ? -1 : 1)
-        this.cubes[i].cube.rotation.z += 0.00025 * i * (this.mode == 0 ? -1 : 2)
+        this.cubes[i].cube.rotation.y += 0.00025 * i * (this.mode == 0 ? 1 : -1)
+        this.cubes[i].cube.rotation.x += 0.00025 * i * (this.mode == 0 ? 1 : -1)
+        this.cubes[i].cube.rotation.z += 0.00025 * i * (this.mode == 0 ? 3 : -1)
       }
-
 
       this.camera.lookAt(this.scene.position)
       this.renderer.render(this.scene, this.camera)
@@ -85,7 +90,7 @@ export default {
     resized() {
       let w = this.$refs.tcAnimation.clientWidth
       let h = this.$refs.tcAnimation.clientHeight
-      this.camera.aspect = w / h;
+      this.camera.aspect = w / h
       this.camera.updateProjectionMatrix()
       this.renderer.setSize(w, h)
     }
