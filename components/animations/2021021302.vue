@@ -13,8 +13,7 @@ export default {
       renderer: null,
       cube: null,
       cubes: [],
-      nFrame: 0,
-      mode: 0
+      cameraZ: 0
     }
   },
   methods: {
@@ -27,11 +26,11 @@ export default {
       let nX = 5
       let nY = 5 / w * h
       if (w < h) {
-        nX = 3 / h * w
-        nY = 3
+        nX = 5 / h * w
+        nY = 5
       }
       let fov = 60
-      let cameraZ = nY / Math.tan(30 * Math.PI / 180.0)
+      this.cameraZ = nY / Math.tan(30 * Math.PI / 180.0)
 
       this.scene = new THREE.Scene()
       this.camera = new THREE.PerspectiveCamera(fov, w / h, 1, 100)
@@ -39,7 +38,7 @@ export default {
       this.renderer.setClearColor(new THREE.Color(0xFFFFFF))
       this.renderer.setSize(w, h)
 
-      this.scene.fog = new THREE.Fog(0xffffff, 8, 0.0001)
+      this.scene.fog = new THREE.Fog(0xffffFF, 8, 0.0001)
 
       /* var axes = new THREE.AxesHelper(10)
        * this.scene.add(axes) */
@@ -56,7 +55,7 @@ export default {
           cube.position.y = y + 0.5
           cube.position.z = 0 - 0.5
           this.scene.add(cube)
-          this.cubes.push({x: x, y: y, cube: cube, s: Math.random()})
+          this.cubes.push({x: x, y: y, cube: cube, direction: 1})
         }
       }
 
@@ -66,7 +65,7 @@ export default {
 
       this.camera.position.x = 0
       this.camera.position.y = 0
-      this.camera.position.z = cameraZ
+      this.camera.position.z = this.cameraZ
       this.camera.lookAt({x: 0, y: 0, z: 0})
 
       this.$refs.tcAnimation.appendChild(this.renderer.domElement);
@@ -78,6 +77,14 @@ export default {
         this.cubes[i].cube.rotation.y += Math.PI * 0.0025
         this.cubes[i].cube.rotation.x += Math.PI * 0.0025
         this.cubes[i].cube.rotation.z += Math.PI * 0.0025
+
+        this.cubes[i].cube.position.z += 0.05 * this.cubes[i].direction
+
+        if (this.cubes[i].direction == 1 && this.cameraZ - 2.0 < this.cubes[i].cube.position.z) {
+          this.cubes[i].direction = -1
+        } else if (this.cubes[i].direction == -1 && this.cubes[i].cube.position.z < -0.5) {
+          this.cubes[i].direction = 1
+        }
       }
 
       this.camera.lookAt(this.scene.position)
