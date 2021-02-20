@@ -1,5 +1,5 @@
 <template>
-  <tc-page>
+  <tc-page :alpha="0.9">
     <template slot="animation">
       <tc-animation />
     </template>
@@ -22,6 +22,9 @@
       </p>
       <p>
         誰もいない深夜の東京は好きだけど、この状況でそうなっていてもあんまりって感じ。ないものねだりなのかもしれない。
+      </p>
+      <p>
+        アニメーションは適当、Three.jsのMatrixなんかapplyしていく感じじゃないっぽくて慣れないかも。
       </p>
     </template>
   </tc-page>

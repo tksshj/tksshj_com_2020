@@ -49,7 +49,7 @@ export default {
       for (let y = -nY; y < nY; y++) {
         for (let x = -nX; x < nX; x++) {
           i++
-          var cubeGeometry = new THREE.BoxGeometry(0.8, 0.8, 0.8)
+          var cubeGeometry = new THREE.BoxGeometry(0.5, 0.7, 1.0)
           var matrix = new THREE.Matrix4()
           matrix.makeTranslation(x + 0.5, y + 0.5, 0)
           cubeGeometry.applyMatrix4(matrix)

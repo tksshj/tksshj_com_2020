@@ -11,7 +11,7 @@
         <h1><a href="/">tksshj.com</a></h1>
       </header>
 
-      <div ref="tcMain" class="tc-main">
+      <div ref="tcMain" class="tc-main" :style="{'background-color': 'rgba(255, 255, 255, ' + mainAlpha + ')' }">
         <main>
           <template v-if="$route.name == 'index'">
             <slot name="main" />
@@ -65,7 +65,8 @@ import TcPages from './tc_pages.js'
 export default {
   props: {
     footer: Boolean,
-    playButton: Boolean
+    playButton: Boolean,
+    alpha: Number
   },
   data() {
     return {
@@ -79,6 +80,9 @@ export default {
     }
   },
   computed: {
+    mainAlpha() {
+      return this.alpha ? this.alpha : 0.8
+    },
     prevButtonClass() {
       return 'tc-nav-button' + (this.prev != null ? '' : ' disabled')
     },
@@ -149,7 +153,7 @@ export default {
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(255, 255, 255, 0.8);
+      /* background-color: rgba(255, 255, 255, 0.8); */
 
       left: -100%;
       transition: left 0.4s;
